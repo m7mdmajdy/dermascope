@@ -1,4 +1,4 @@
-package com.example.dermascope
+package com.example.untitled
 
 import io.flutter.embedding.android.FlutterActivity
 
