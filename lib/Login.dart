@@ -13,6 +13,18 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: Icon(Icons.account_circle_rounded),
+        toolbarHeight: 40,
+        backgroundColor: HexColor("#4c8cb5"),
+        centerTitle: true,
+        title: Text("Login",textDirection:TextDirection.ltr),
+        titleTextStyle: TextStyle(fontSize: 20),
+        foregroundColor: Colors.white,
+        actions: <Widget>[
+          // overflow menu
+        ],
+      ),
       body:Container(
         child: Stack(
           children: [
@@ -48,17 +60,17 @@ class Login extends StatelessWidget {
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           labelText: 'Email Address',
-                          labelStyle: TextStyle(color: Colors.white),
-                          fillColor: HexColor("#35698A").withOpacity(0.4), filled: true,
+                          labelStyle: TextStyle(color: Colors.black),
+                          fillColor: HexColor("#ffffff"), filled: true,
                           border: OutlineInputBorder(),
                           prefixIcon: Icon(
                             Icons.email,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0),
                             borderSide: BorderSide(
-                              color: Colors.white,
+                              color: Colors.black,
                               width: 2.0,
                             ),
                           ),
@@ -77,21 +89,21 @@ class Login extends StatelessWidget {
                         obscureText: true,
                         decoration: InputDecoration(
                           labelText: 'Password',
-                          labelStyle: TextStyle(color: Colors.white),
-                          fillColor: HexColor("#35698A").withOpacity(0.1), filled: true,
+                          labelStyle: TextStyle(color: Colors.black),
+                          fillColor: HexColor("#ffffff"), filled: true,
                           border: OutlineInputBorder(),
                           prefixIcon: Icon(
                             Icons.lock,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                           suffixIcon: Icon(
                             Icons.remove_red_eye,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0),
                             borderSide: BorderSide(
-                              color: Colors.white,
+                              color: Colors.black,
                               width: 2.0,
                             ),
                           ),

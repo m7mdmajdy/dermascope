@@ -42,7 +42,7 @@ class signUp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           leading: Icon(Icons.account_circle_rounded),
-          toolbarHeight: 37,
+          toolbarHeight: 40,
           backgroundColor: HexColor("#4c8cb5"),
           centerTitle: true,
           title: Text("Create an account",textDirection:TextDirection.ltr),
