@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:untitled/signup.dart';
 import 'package:untitled/welcome.dart';
+import 'package:untitled/Login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
 
       ),
-      home: SafeArea(child: const MyHomePage()),
+      home: SafeArea(child: Login()),
     );
   }
 }
@@ -51,7 +53,7 @@ class _State extends State<MyHomePage> {
     Timer(Duration(seconds: 3),navigateToSecondPage);
   }
   void navigateToSecondPage(){
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>SecondPage()));
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
   }
   @override
   Widget build(BuildContext context) {
