@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   hexcolor: ^2.0.6
   http:
+  image_picker: ^0.8.5
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -62,6 +63,7 @@ flutter:
   assets:
     - images/ds.png
     - images/logo.png
+    - images/derm.jpg
 
   #   - images/a_dot_ham.jpeg
 
