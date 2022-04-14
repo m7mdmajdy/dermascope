@@ -51,6 +51,7 @@ class uploadImage extends State<myApp>{
       final imageTemp = File(image.path);
 
       setState(() => this.image = imageTemp);
+      print('GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG');
     } on PlatformException catch(e) {
       print('Failed to pick image: $e');
     }
@@ -97,7 +98,7 @@ class uploadImage extends State<myApp>{
                       SizedBox(
                         height: 35.0,
                       ),
-                      image != null ? Text("ssss"): Icon(Icons.image,size: 250,color: Colors.white.withOpacity(0.5),),
+                      image != null ? Image.file(image!,width: 50,height: 50,): Icon(Icons.image,size: 250,color: Colors.white.withOpacity(0.5),),
                       Row(
                         children: [
                           Padding(
