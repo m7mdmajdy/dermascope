@@ -1,16 +1,10 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:untitled/signup.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:untitled/uploadImage.dart';
 
-class uploadImage extends StatelessWidget {
-  Future upload_image() async{
-    await ImagePicker().pickImage(source: ImageSource.camera);
-  }
-  Future open_camera() async{
-    await ImagePicker().pickImage(source: ImageSource.gallery);
-  }
+
+class uploadedImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +13,7 @@ class uploadImage extends StatelessWidget {
         toolbarHeight: 40,
         backgroundColor: HexColor("#4c8cb5"),
 
-        title: Text("Upload image"),
+        title: Text("Confirm image"),
         titleTextStyle: TextStyle(fontSize: 20),
         foregroundColor: Colors.white,
         actions: <Widget>[
@@ -53,12 +47,16 @@ class uploadImage extends StatelessWidget {
                       SizedBox(
                         height: 35.0,
                       ),
-                      Image(image: AssetImage('images/derm.jpg')),
+                     // Image(image: AssetImage()),
+                      Icon(Icons.image,size: 20,color: Colors.white.withOpacity(0.5),),
                       Row(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ElevatedButton(onPressed:upload_image,
+                            padding: const EdgeInsets.only(left: 40.0),
+                            child: ElevatedButton(onPressed:(){
+
+
+                            },
                                 style: ButtonStyle(
 
                                     backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
@@ -70,11 +68,14 @@ class uploadImage extends StatelessWidget {
                                     )
                                 ),
 
-                                child: Text("Choose from gallery")),
+                                child: Text("Start detection")),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 50.0),
-                            child: ElevatedButton(onPressed: open_camera,
+                            padding: const EdgeInsets.only(left: 60.0),
+                            child: ElevatedButton(onPressed: (){
+                             // Navigator.push(context, MaterialPageRoute(builder: (context)=>uploadImage()));
+
+                            },
                               style: ButtonStyle(
 
                                   backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
@@ -85,7 +86,7 @@ class uploadImage extends StatelessWidget {
                                       )
                                   )
                               ),
-                              child: Text("Open camera"),),
+                              child: Text("Try again"),),
                           ),
 
 

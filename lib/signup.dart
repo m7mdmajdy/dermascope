@@ -2,7 +2,8 @@ import 'dart:ui';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:untitled/upload image.dart';
+import 'package:untitled/uploadImage.dart';
+import 'package:untitled/uploadImage.dart';
 
 class signUp extends StatelessWidget {
 
@@ -229,7 +230,7 @@ class signUp extends StatelessWidget {
 
                           onPressed: ()
                           {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>uploadImage()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>myApp()));
                             print(emailController.text);
                             print(passwordController.text);
                             print(nameController.text);
