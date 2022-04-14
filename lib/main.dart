@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled/signup.dart';
 import 'package:untitled/welcome.dart';
 import 'package:untitled/Login.dart';
+import 'package:untitled/upload image.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
 
       ),
-      home: SafeArea(child: Login()),
+      home: SafeArea(child: MyHomePage()),
     );
   }
 }
