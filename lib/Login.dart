@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:untitled/signup.dart';
+import 'package:path/path.dart';
 
 class Login extends StatelessWidget {
   var emailController = TextEditingController();
@@ -12,7 +13,7 @@ class Login extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.account_circle_rounded),
-        toolbarHeight: 40,
+        toolbarHeight: 45,
         backgroundColor: HexColor("#4c8cb5"),
 
         title: Text("Login"),

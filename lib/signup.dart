@@ -2,7 +2,8 @@ import 'dart:ui';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:untitled/upload image.dart';
+import 'package:untitled/uploadImage.dart';
+import 'package:untitled/uploadImage.dart';
 
 class signUp extends StatelessWidget {
 
@@ -43,7 +44,7 @@ class signUp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           leading: Icon(Icons.account_circle_rounded),
-          toolbarHeight: 40,
+          toolbarHeight: 45,
           backgroundColor: HexColor("#4c8cb5"),
           title: Text("Create an account",textDirection:TextDirection.ltr),
           titleTextStyle: TextStyle(fontSize: 20),
@@ -229,7 +230,7 @@ class signUp extends StatelessWidget {
 
                           onPressed: ()
                           {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>uploadImage()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>myApp()));
                             print(emailController.text);
                             print(passwordController.text);
                             print(nameController.text);
