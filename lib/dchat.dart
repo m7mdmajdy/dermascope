@@ -189,5 +189,5 @@ class PatientChat extends StatelessWidget {
         ),
       ),
     );
-  }
+  } 
 }
