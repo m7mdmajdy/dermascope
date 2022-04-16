@@ -13,7 +13,7 @@ class Login extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.account_circle_rounded),
-        toolbarHeight: 40,
+        toolbarHeight: 45,
         backgroundColor: HexColor("#4c8cb5"),
 
         title: Text("Login"),

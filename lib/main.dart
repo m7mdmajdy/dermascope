@@ -5,7 +5,6 @@ import 'package:untitled/signup.dart';
 import 'package:untitled/welcome.dart';
 import 'package:untitled/Login.dart';
 import 'package:untitled/uploadImage.dart';
-import 'package:untitled/uploadedImage.dart';
 
 void main() {
   runApp(const MyApp());

@@ -59,98 +59,72 @@ class uploadImage extends State<myApp>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Icon(Icons.image),
-        toolbarHeight: 40,
-        backgroundColor: HexColor("#4c8cb5"),
-
-        title: Text("Uploaaaad image"),
-        titleTextStyle: TextStyle(fontSize: 20),
-        foregroundColor: Colors.white,
-        actions: <Widget>[
-          // overflow menu
-        ],
-      ),
-      body:Container(
-        child: Stack(
-          children: [
-            Opacity(opacity: 0.5,
-              child: ClipPath(
-                clipper: WaveClipper(),
-                child: Container(
-                  color: HexColor("#35698A").withOpacity(0.6),
-                  height: 580,
-                ),
-              ),
-            ),
-            ClipPath(
-              clipper: WaveClipper(),
-              child: Container(
-                color: HexColor("#35698A"),
-                height: 560,
-                child:Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment:CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-
-                      SizedBox(
-                        height: 35.0,
-                      ),
-                      image != null ? Image.file(image!,width: 50,height: 50,): Icon(Icons.image,size: 250,color: Colors.white.withOpacity(0.5),),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
-                            child: ElevatedButton(onPressed:pickImageC,
-                                style: ButtonStyle(
-
-                                    backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
-                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                        RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(100.0),
-                                            side: BorderSide(color: HexColor("#4c8cb5"))
-                                        ),
-                                    ),
-                                ),
-
-                                child: Row(children: [
-                                  Icon(Icons.camera_alt),
-                                  SizedBox(width: 4,),
-                                  Text("Open camera"),
-                                ])),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10.0),
-                            child: ElevatedButton(onPressed: pickImage,
-                              style: ButtonStyle(
-
-                                  backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
-                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(100.0),
-                                          side: BorderSide(color: HexColor("#4c8cb5"))
-                                      ),
-                                  ),
-                              ),
-                              child: Row(children: [
-                                Icon(Icons.image_outlined),
-                                SizedBox(width: 4,),
-                                Text("Choose from gallery")]),),
-                          ),
-
-
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
+        appBar: AppBar(
+          leading: Icon(Icons.image),
+          toolbarHeight: 45,
+          backgroundColor: HexColor("#4c8cb5"),
+          title: const Text("Upload Image"),
+          titleTextStyle: TextStyle(fontSize: 20),
+          foregroundColor: Colors.white,
         ),
-      ),
+        body: Container(
+            color: HexColor("#35698A"),
+          child: Center(
+
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+              children:[
+                image != null ? Image.file(image!,width: 400,height: 400,): Icon(Icons.image,size: 250,color: Colors.white.withOpacity(0.3),),
+                SizedBox(height: 10,width: 10),
+                Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: ElevatedButton(onPressed:pickImageC,
+                        style: ButtonStyle(
+
+                          backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100.0),
+                                side: BorderSide(color: HexColor("#4c8cb5"))
+                            ),
+                          ),
+                        ),
+
+                        child: Row(children: [
+                          Icon(Icons.camera_alt),
+                          SizedBox(width: 4,),
+                          Text("Open camera"),
+                        ])),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30.0),
+                    child: ElevatedButton(onPressed: pickImage,
+                      style: ButtonStyle(
+
+                        backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(100.0),
+                              side: BorderSide(color: HexColor("#4c8cb5"))
+                          ),
+                        ),
+                      ),
+                      child: Row(children: [
+                        Icon(Icons.image_outlined),
+                        SizedBox(width: 4,),
+                        Text("Choose from gallery")]),),
+                  ),
+                  SizedBox(height: 20,),
+
+                ],
+              ),
+              ]
+            ),
+          ),
+        )
     );
   }
   
