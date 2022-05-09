@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:untitled/signup.dart';
 import 'package:path/path.dart';
-
 class Login extends StatelessWidget {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
@@ -15,7 +14,6 @@ class Login extends StatelessWidget {
         leading: Icon(Icons.account_circle_rounded),
         toolbarHeight: 45,
         backgroundColor: HexColor("#4c8cb5"),
-
         title: Text("Login"),
         titleTextStyle: TextStyle(fontSize: 20),
         foregroundColor: Colors.white,
@@ -177,7 +175,6 @@ class Login extends StatelessWidget {
     );
   }
 }
-
 class WaveClipper extends CustomClipper<Path>{
   @override
   Path getClip(Size size) {

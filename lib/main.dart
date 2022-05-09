@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:untitled/Acne.dart';
+import 'package:untitled/result.dart';
 import 'package:untitled/signup.dart';
 import 'package:untitled/welcome.dart';
 import 'package:untitled/Login.dart';
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
 
       ),
-      home: SafeArea(child: MyHomePage()),
+      home: Acne(),
     );
   }
 }
@@ -50,8 +52,6 @@ class _State extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-
       body: Center(
         child: Container(
           decoration: BoxDecoration(
@@ -68,7 +68,6 @@ class _State extends State<MyHomePage> {
             child: Column(
               children:[Flexible(
                 child: Container(
-
                 ),
                 flex: 1,
               ), Flexible(
