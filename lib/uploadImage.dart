@@ -7,6 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+import 'dart:typed_data';
+
 
 class myHomePage extends StatelessWidget{
   @override
@@ -32,14 +34,13 @@ class uploadImage extends State<myApp>{
   String? message ="";
   File? selectedImage;
 
-
   imageToApi() async{
     final request = http.MultipartRequest(
-      "POST", Uri.parse("https://fad7-156-195-236-201.eu.ngrok.io"));
+        "POST", Uri.parse("https://fad7-156-195-236-201.eu.ngrok.io"));
     final headers ={"Content-type":"multipart/form-data"};
     request.files.add(http.MultipartFile('image',
         selectedImage!.readAsBytes().asStream(),selectedImage!.lengthSync(),
-      filename: selectedImage!.path.split("/").last));
+        filename: selectedImage!.path.split("/").last));
     request.headers.addAll(headers);
     final response =await request.send();
     http.Response res = await http.Response.fromStream(response);
