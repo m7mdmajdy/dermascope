@@ -5,6 +5,7 @@ import 'package:untitled/signup.dart';
 import 'package:untitled/welcome.dart';
 import 'package:untitled/Login.dart';
 import 'package:untitled/uploadImage.dart';
+import 'package:untitled/result2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
 
       ),
-      home: SafeArea(child: MyHomePage()),
+      home: SafeArea(child: myApp()),
     );
   }
 }
