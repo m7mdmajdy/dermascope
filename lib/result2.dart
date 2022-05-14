@@ -32,7 +32,7 @@ class resultImage extends State<myResult>{
     print("TTTTTTTTTTTTT");
 
     var response=
-    await http.get(Uri.parse("https://4933-156-195-59-92.eu.ngrok.io"));
+    await http.get(Uri.parse("https://e28c-156-195-145-103.eu.ngrok.io"));
     print("OOOOOOOOOOOOOOOOOO");
 
     if (response.statusCode == 200) {
