@@ -38,6 +38,7 @@ dependencies:
   http:
   image_picker: ^0.8.5
   path: ^1.8.0
+  convert: ^3.0.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

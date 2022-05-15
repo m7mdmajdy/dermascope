@@ -7,6 +7,24 @@ import 'package:path/path.dart';
 class Login extends StatelessWidget {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
+
+  postData(var enteredEmail,var enteredPassword)async{
+    try{
+      var response = await http.post(Uri.parse("https://e28c-156-195-145-103.eu.ngrok.io"),
+        body: {
+        "email": enteredEmail.toString(),
+          "password":enteredPassword.toString()
+        }
+      );
+      print(response.body);
+      print("Email and password has successfully sent to api");
+
+    } catch(e){
+      print("ERRRRRRRRRRRRRRRRRRRRRR");
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,8 +148,24 @@ class Login extends StatelessWidget {
 
                                 onPressed: ()
                                 {
-                                  print(emailController.text);
-                                  print(passwordController.text);
+
+                                  var emailText=emailController.text;
+                                  var passText=passwordController.text;
+                                  bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(emailText);
+                                  bool passwordValid=RegExp(r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$").hasMatch(passText);
+                                  var passwordText=passwordController.text;
+                                  if(emailText==""||passwordText==""){
+                                    showAlertDialog(context);
+                                  }
+                                  else if(emailValid==false||passwordValid==false){
+                                    showAlertDialog(context);
+                                  }
+                                  else
+                                    {
+                                      postData(emailText, passText);
+
+                                    }
+
                                 },
                                 child: Text(
                                   'Login',
@@ -172,6 +206,33 @@ class Login extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+  showAlertDialog(BuildContext context) {
+
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Can't login"),
+      content: Text("Invalid email or password."),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }
