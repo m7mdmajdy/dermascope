@@ -21,7 +21,12 @@ class myHomePage extends StatelessWidget{
   }
 }
 class myApp extends StatefulWidget{
-  const myApp({Key? key}) : super(key: key);
+  final String? email;
+  final String? password;
+  const myApp({Key? key, this.email, this.password}) : super(key: key);
+
+
+
   @override
   State<myApp> createState() => uploadImage();
 }
@@ -37,7 +42,7 @@ class uploadImage extends State<myApp>{
 
   imageToApi() async{
     final request = http.MultipartRequest(
-        "POST", Uri.parse("https://4933-156-195-59-92.eu.ngrok.io"));
+        "POST", Uri.parse("https://762e-156-195-145-103.eu.ngrok.io"));
     final headers ={"Content-type":"multipart/form-data"};
     request.files.add(http.MultipartFile('image',
         selectedImage!.readAsBytes().asStream(),selectedImage!.lengthSync(),
@@ -55,7 +60,7 @@ class uploadImage extends State<myApp>{
     print("TTTTTTTTTTTTT");
 
     var response=
-    await http.get(Uri.parse("https://e28c-156-195-145-103.eu.ngrok.io"));
+    await http.get(Uri.parse("https://762e-156-195-145-103.eu.ngrok.io"));
     print("OOOOOOOOOOOOOOOOOO");
 
     if (response.statusCode == 200) {
@@ -176,6 +181,8 @@ class uploadImage extends State<myApp>{
                         imageToApi();
                         navigateToSecondPage();
                         getResult();
+                        print("ASDasdasd");
+                        print(widget.email);
                       },
                     ),
                   ): SizedBox(width: 10,height: 10,),
@@ -186,6 +193,6 @@ class uploadImage extends State<myApp>{
     );
   }
   void navigateToSecondPage(){
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>myResult()));
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>myResult(email: widget.email,password: widget.password,)));
   }
 }

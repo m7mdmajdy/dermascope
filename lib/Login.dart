@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:untitled/signup.dart';
 import 'package:path/path.dart';
+import 'package:untitled/uploadImage.dart';
 class Login extends StatelessWidget {
+
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
 
   postData(var enteredEmail,var enteredPassword)async{
     try{
-      var response = await http.post(Uri.parse("https://e28c-156-195-145-103.eu.ngrok.io"),
+      var response = await http.post(Uri.parse("https://037e-156-195-145-103.eu.ngrok.io/user/login"),
         body: {
         "email": enteredEmail.toString(),
           "password":enteredPassword.toString()
@@ -163,6 +165,7 @@ class Login extends StatelessWidget {
                                   else
                                     {
                                       postData(emailText, passText);
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>myApp(email: emailText,password: passText,)));
 
                                     }
 

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
+import 'package:untitled/Login.dart';
 import 'package:http/http.dart' as http;
 import 'package:untitled/uploadImage.dart' as uu;
 class myResultPage extends StatelessWidget{
@@ -20,8 +21,10 @@ class myResultPage extends StatelessWidget{
   }
 }
 class myResult extends StatefulWidget{
+  final String? email;
+  final String? password;
+  const myResult({Key? key, this.email, this.password}) : super(key: key);
 
-  const myResult({Key? key}) : super(key: key);
   @override
   State<myResult> createState() => resultImage();
 }
@@ -32,7 +35,7 @@ class resultImage extends State<myResult>{
     print("TTTTTTTTTTTTT");
 
     var response=
-    await http.get(Uri.parse("https://e28c-156-195-145-103.eu.ngrok.io"));
+    await http.get(Uri.parse("https://762e-156-195-145-103.eu.ngrok.io"));
     print("OOOOOOOOOOOOOOOOOO");
 
     if (response.statusCode == 200) {
@@ -166,6 +169,7 @@ class resultImage extends State<myResult>{
                   setState(() {
                     newForm();
                   });
+                  print(widget.email);
                   },
                 color: Colors.blue,
                 shape: RoundedRectangleBorder(

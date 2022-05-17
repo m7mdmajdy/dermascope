@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
 
       ),
-      home: SafeArea(child: Login()),
+      home: SafeArea(child: MyHomePage()),
 
     );
   }
