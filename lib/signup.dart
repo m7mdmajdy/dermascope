@@ -1,3 +1,4 @@
+/*done*/
 import 'dart:ui';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -16,16 +17,16 @@ class signUp extends StatelessWidget {
     return InputDecoration(
       labelText: 'Date of birth',
       labelStyle: TextStyle(color: Colors.white),
-      fillColor: HexColor("#ffffff"), filled: true,
+      fillColor: HexColor("#35698A").withOpacity(0.4), filled: true,
       border: OutlineInputBorder(),
       prefixIcon: Icon(
         Icons.date_range,
-        color: Colors.black,
+        color: Colors.white,
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(25.0),
         borderSide: BorderSide(
-          color: Colors.black,
+          color: Colors.white,
           width: 2.0,
         ),
       ),
@@ -38,11 +39,8 @@ class signUp extends StatelessWidget {
   var dateController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-
-      home: Scaffold(
-        appBar: AppBar(
+    return Scaffold(
+        /* appBar: AppBar(
           leading: Icon(Icons.account_circle_rounded),
           toolbarHeight: 45,
           backgroundColor: HexColor("#4c8cb5"),
@@ -52,7 +50,7 @@ class signUp extends StatelessWidget {
           actions: <Widget>[
             // overflow menu
           ],
-        ),
+        ),*/
         body:Container(
           child: Stack(
             children: [
@@ -72,183 +70,188 @@ class signUp extends StatelessWidget {
                   height: 640,
                   child:Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment:CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextFormField(
-                          controller: nameController,
-                          keyboardType: TextInputType.name,
-                          decoration: InputDecoration(
-                            labelText: 'Name',
-                            labelStyle: TextStyle(color: Colors.black),
-                            fillColor: HexColor("#ffffff"), filled: true,
-                            border: OutlineInputBorder(),
-                            prefixIcon: Icon(
-                              Icons.face,
-                              color: Colors.black,
+                    child: SingleChildScrollView(
+                      child: Column(
+
+                        crossAxisAlignment:CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 50.0,
+                          ),
+                          TextFormField(
+                            controller: nameController,
+                            keyboardType: TextInputType.name,
+                            decoration: InputDecoration(
+                              labelText: 'Name',
+                              labelStyle: TextStyle(color: Colors.white),
+                              fillColor:  HexColor("#35698A").withOpacity(0.1), filled: true,
+                              border: OutlineInputBorder(),
+                              prefixIcon: Icon(
+                                Icons.account_circle_outlined,
+                                color: Colors.white,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(25.0),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                  width: 2.0,
+                                ),
+                              ),
                             ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(25.0),
-                              borderSide: BorderSide(
-                                color: Colors.black,
-                                width: 2.0,
+                            onFieldSubmitted: (String value) {
+                              print(value);
+                            },
+                          ),
+                          SizedBox(
+                            height: 15.0,
+                          ),
+                          TextFormField(
+                            controller: emailController,
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                              labelText: 'Email Address',
+                              labelStyle: TextStyle(color: Colors.white),
+                              fillColor: HexColor("#35698A").withOpacity(0.1), filled: true,
+                              border: OutlineInputBorder(),
+                              prefixIcon: Icon(
+                                Icons.email,
+                                color: Colors.white,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(25.0),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                  width: 2.0,
+                                ),
+                              ),
+                            ),
+
+                            onFieldSubmitted: (String value) {
+                              print(value);
+                            },
+                          ),
+                          SizedBox(
+                            height: 15.0,
+                          ),
+
+                          TextFormField(
+                            controller: passwordController,
+                            keyboardType: TextInputType.visiblePassword,
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              labelText: 'Password',
+                              labelStyle: TextStyle(color: Colors.white),
+                              fillColor:  HexColor("#35698A").withOpacity(0.1), filled: true,
+                              border: OutlineInputBorder(),
+                              prefixIcon: Icon(
+                                Icons.lock,
+                                color: Colors.white,
+                              ),
+                              suffixIcon: Icon(
+                                Icons.remove_red_eye,
+                                color: Colors.white,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(25.0),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                  width: 2.0,
+                                ),
+                              ),
+                            ),
+                            onFieldSubmitted: (String value) {
+                              print(value);
+                            },
+                          ),
+                          SizedBox(
+                            height: 15.0,
+                          ),
+                          TextFormField(
+                            controller: phoneController,
+                            keyboardType: TextInputType.phone,
+                            decoration: InputDecoration(
+                              labelText: 'Phone Number',
+                              labelStyle: TextStyle(color: Colors.white),
+                              fillColor:  HexColor("#35698A").withOpacity(0.1),filled: true,
+                              border: OutlineInputBorder(),
+                              prefixIcon: Icon(
+                                Icons.phone,
+                                color: Colors.white,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(25.0),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                  width: 2.0,
+                                ),
+                              ),
+                            ),
+
+                            onFieldSubmitted: (String value) {
+                              print(value);
+                            },
+                          ),
+                          SizedBox(
+                            height: 15.0,
+                          ),
+
+                          TextField(
+                            showCursor: true,
+                            readOnly: true,
+                            onTap: () {
+                              showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(1940),
+                                  lastDate: DateTime.now())
+                                  .then((date) {
+                                //code to handle date
+                                print(date.toString());
+                              });
+                            },
+                            controller: _dateOfBirthController,
+                            decoration: _getTextFieldWithCalendarIconDecoration(),
+                          ),
+                          SizedBox(
+                            height: 30.0,
+                          ),
+
+
+                          ElevatedButton(
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
+                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(100.0),
+                                          side: BorderSide(color: HexColor("#4c8cb5"))
+                                      )
+                                  )
+                              ),
+
+                            onPressed: ()
+                            {
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>myApp()));
+                              print(emailController.text);
+                              print(passwordController.text);
+                              print(nameController.text);
+
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(13.0),
+                              child: Text(
+                                'Sign Up',
+                                style: TextStyle(color: Colors.white,
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
-
-                          onFieldSubmitted: (String value) {
-                            print(value);
-                          },
-                        ),
-                        SizedBox(
-                          height: 15.0,
-                        ),
-                        TextFormField(
-                          controller: emailController,
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(
-                            labelText: 'Email Address',
-                            labelStyle: TextStyle(color: Colors.black),
-                            fillColor: HexColor("#ffffff"), filled: true,
-                            border: OutlineInputBorder(),
-                            prefixIcon: Icon(
-                              Icons.email,
-                              color: Colors.black,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(25.0),
-                              borderSide: BorderSide(
-                                color: Colors.black,
-                                width: 2.0,
-                              ),
-                            ),
+                          SizedBox(
+                            height: 15.0,
                           ),
-
-                          onFieldSubmitted: (String value) {
-                            print(value);
-                          },
-                        ),
-                        SizedBox(
-                          height: 15.0,
-                        ),
-
-                        TextFormField(
-                          controller: passwordController,
-                          keyboardType: TextInputType.visiblePassword,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            labelText: 'Password',
-                            labelStyle: TextStyle(color: Colors.black),
-                            fillColor: HexColor("#ffffff"), filled: true,
-                            border: OutlineInputBorder(),
-                            prefixIcon: Icon(
-                              Icons.lock,
-                              color: Colors.black,
-                            ),
-                            suffixIcon: Icon(
-                              Icons.remove_red_eye,
-                              color: Colors.black,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(25.0),
-                              borderSide: BorderSide(
-                                color: Colors.black,
-                                width: 2.0,
-                              ),
-                            ),
-                          ),
-                          onFieldSubmitted: (String value) {
-                            print(value);
-                          },
-                        ),
-                        SizedBox(
-                          height: 30.0,
-                        ),
-                        TextFormField(
-                          controller: phoneController,
-                          keyboardType: TextInputType.phone,
-                          decoration: InputDecoration(
-                            labelText: 'Phone Number',
-                            labelStyle: TextStyle(color: Colors.black),
-                            fillColor: HexColor("#ffffff"),filled: true,
-                            border: OutlineInputBorder(),
-                            prefixIcon: Icon(
-                              Icons.phone,
-                              color: Colors.black,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(25.0),
-                              borderSide: BorderSide(
-                                color: Colors.black,
-                                width: 2.0,
-                              ),
-                            ),
-                          ),
-
-                          onFieldSubmitted: (String value) {
-                            print(value);
-                          },
-                        ),
-                        SizedBox(
-                          height: 15.0,
-                        ),
-
-                        TextField(
-                          showCursor: true,
-                          readOnly: true,
-                          onTap: () {
-                            showDatePicker(
-                                context: context,
-                                initialDate: DateTime.now(),
-                                firstDate: DateTime(1940),
-                                lastDate: DateTime.now())
-                                .then((date) {
-                              //code to handle date
-                              print(date.toString());
-                            });
-                          },
-                          controller: _dateOfBirthController,
-                          decoration: _getTextFieldWithCalendarIconDecoration(),
-                        ),
-                        SizedBox(
-                          height: 30.0,
-                        ),
-
-
-                        ElevatedButton(
-                            style: ButtonStyle(
-
-                              backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
-                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(100.0),
-                                        side: BorderSide(color: HexColor("#4c8cb5"))
-                                    )
-                                )
-                            ),
-
-                          onPressed: ()
-                          {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>myApp()));
-                            print(emailController.text);
-                            print(passwordController.text);
-                            print(nameController.text);
-
-                          },
-                          child: Text(
-                            'Sign Up',
-                            style: TextStyle(color: Colors.white,
-                                fontWeight: FontWeight.bold),
-
-
-                          ),
-                        ),
-                        SizedBox(
-                          height: 15.0,
-                        ),
-
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -256,8 +259,7 @@ class signUp extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
 

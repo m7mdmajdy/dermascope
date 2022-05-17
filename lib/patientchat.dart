@@ -1,3 +1,4 @@
+/*done*/
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
@@ -7,17 +8,17 @@ class Chat extends StatelessWidget {
   Widget build (BuildContext context)
   {
     return Scaffold(
-      backgroundColor:Colors.blueAccent,
+      backgroundColor: Color(0xff35698A),
       appBar: AppBar(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(30),
           ),),
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xffC1D6F1FF),
         title: Text(
           'Chat' ,
           style:TextStyle(
-              color: Colors.blueAccent  , fontWeight:FontWeight.bold, fontSize: 25.0
+              color: Color(0xff35698A)  , fontWeight:FontWeight.bold, fontSize: 25.0
           ),
         ),
         centerTitle: true,
@@ -65,7 +66,7 @@ class Chat extends StatelessWidget {
                 child: Row(
                   children:[
                     Icon(
-                      Icons.search,color: Colors.blueAccent,
+                      Icons.search,color: Color(0xff35698A),
                     ),
                     SizedBox(
                       width: 15.0,
@@ -73,7 +74,7 @@ class Chat extends StatelessWidget {
                     Text(
                       'Search',
                       style:
-                      TextStyle( color: Colors.blueAccent),
+                      TextStyle( color:Color(0xff35698A)),
                     ),
                   ],
                 ),

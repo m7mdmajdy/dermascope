@@ -1,3 +1,4 @@
+/*done */
 import 'package:flutter/material.dart';
 class PatientChat extends StatelessWidget {
   const PatientChat({Key? key}) : super(key: key);
@@ -5,18 +6,18 @@ class PatientChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: Color(0xff35698A),
       appBar: AppBar(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(30),
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xffC1D6F1FF),
         title: Text(
           'Chat',
           style: TextStyle(
-              color: Colors.blueAccent,
+              color: Color(0xff35698A),
               fontWeight: FontWeight.bold,
               fontSize: 25.0),
         ),
@@ -63,14 +64,14 @@ class PatientChat extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.search,
-                      color: Colors.blueAccent,
+                      color: Color(0xff35698A),
                     ),
                     SizedBox(
                       width: 15.0,
                     ),
                     Text(
                       'Search',
-                      style: TextStyle(color: Colors.blueAccent),
+                      style: TextStyle(color: Color(0xff35698A)),
                     ),
                   ],
                 ),
@@ -89,7 +90,7 @@ class PatientChat extends StatelessWidget {
                           width: 70.0,
                           height: 70.0,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Color(0xffC1D6F1FF),
                             //const Color(0xff7c94b6),
                             image: DecorationImage(
                               image: NetworkImage('https://as2.ftcdn.net/v2/jpg/00/28/98/11/1000_F_28981140_Ctcm3S25CyV8DYw7FIbDn9z9yyOwN6DP.jpg'),
