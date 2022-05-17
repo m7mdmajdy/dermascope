@@ -77,7 +77,7 @@ class signUp extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SizedBox(
-                            height: 50.0,
+                            height: 100.0,
                           ),
                           TextFormField(
                             controller: nameController,
