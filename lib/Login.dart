@@ -12,7 +12,7 @@ class Login extends StatelessWidget {
 
   postData(var enteredEmail,var enteredPassword)async{
     try{
-      var response = await http.post(Uri.parse("https://037e-156-195-145-103.eu.ngrok.io/user/login"),
+      var response = await http.post(Uri.parse("https://7bd2-156-195-100-159.eu.ngrok.io/user/login"),
         body: {
         "email": enteredEmail.toString(),
           "password":enteredPassword.toString()

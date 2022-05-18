@@ -22,8 +22,8 @@ class myResultPage extends StatelessWidget{
 }
 class myResult extends StatefulWidget{
   final String? email;
-  final String? password;
-  const myResult({Key? key, this.email, this.password}) : super(key: key);
+  final String? res;
+  const myResult({Key? key, this.email, this.res}) : super(key: key);
 
   @override
   State<myResult> createState() => resultImage();
@@ -31,11 +31,9 @@ class myResult extends StatefulWidget{
 class resultImage extends State<myResult>{
   var diseaseResult;
   Future getResult()async{
-    String rawJson = '{"name":"Mary","age":30}';
-    print("TTTTTTTTTTTTT");
 
     var response=
-    await http.get(Uri.parse("https://762e-156-195-145-103.eu.ngrok.io"));
+    await http.get(Uri.parse("https://e87b-156-195-145-103.eu.ngrok.io"));
     print("OOOOOOOOOOOOOOOOOO");
 
     if (response.statusCode == 200) {
@@ -49,25 +47,33 @@ class resultImage extends State<myResult>{
     } else {
       print('Request failed with status: ${response.statusCode}.');
     }
-/*
-  var jsonData = convert.jsonDecode(response.body);
-  print("IIIIIIIIIIIIIIII");
-  List<Results> myResult=[];
-  print("EEEEEEEEEEE");
 
-  for(var u in jsonData){
-    Results res=Results(u['greetings']);
-    myResult.add(res);
-    print("qqqqqqqq");
-  }
-  print(myResult.length);
-  print("sssss");
-  return myResult;
-}
-*/
     setState(() {
     });
   }
+
+  sendResult(var enteredEmail,var result)async{
+    print("ZZZZZZZZZZZZ");
+    print(result);
+    try{
+      var response = await http.post(Uri.parse("https://7bd2-156-195-100-159.eu.ngrok.io/user/detect"),
+          body: {
+            "email": enteredEmail.toString(),
+            "image": result
+          }
+      );
+      print(response.body);
+      print("sdsaasdasdasdasd");
+      print(result);
+      print("%5%%%%%%%%");
+      print("Email and result has successfully sent to database");
+
+    } catch(e){
+      print("ERRRRRRRRRRRRRRRRRRRRRR");
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -170,6 +176,8 @@ class resultImage extends State<myResult>{
                     newForm();
                   });
                   print(widget.email);
+                  print(diseaseResult);
+                  sendResult(widget.email, widget.res.toString());
                   },
                 color: Colors.blue,
                 shape: RoundedRectangleBorder(

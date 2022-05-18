@@ -33,7 +33,8 @@ class myApp extends StatefulWidget{
 class uploadImage extends State<myApp>{
   String? message ="";
   File? selectedImage;
-  var diseaseResult;
+  String? diseaseResult;
+  String? sentDisease;
 
 
 
@@ -42,7 +43,7 @@ class uploadImage extends State<myApp>{
 
   imageToApi() async{
     final request = http.MultipartRequest(
-        "POST", Uri.parse("https://762e-156-195-145-103.eu.ngrok.io"));
+        "POST", Uri.parse("https://e87b-156-195-145-103.eu.ngrok.io"));
     final headers ={"Content-type":"multipart/form-data"};
     request.files.add(http.MultipartFile('image',
         selectedImage!.readAsBytes().asStream(),selectedImage!.lengthSync(),
@@ -55,27 +56,26 @@ class uploadImage extends State<myApp>{
     setState(() {
     });
   }
-  Future getResult()async{
-    String rawJson = '{"name":"Mary","age":30}';
-    print("TTTTTTTTTTTTT");
-
+  Future<void> getResult()async{
     var response=
-    await http.get(Uri.parse("https://762e-156-195-145-103.eu.ngrok.io"));
-    print("OOOOOOOOOOOOOOOOOO");
-
+    await http.get(Uri.parse("https://e87b-156-195-145-103.eu.ngrok.io"));
     if (response.statusCode == 200) {
-      print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-      print(response.runtimeType);
       var jsonResponse =
       jsonDecode(response.body);
       print("@@@@@@@@@@@@@@@@");
-      diseaseResult = jsonResponse['resssss'];
-      print('Number of books about http: $diseaseResult.');
+      this.diseaseResult =jsonResponse['resssss'].toString();
+      print("RRRRRRRRRRRR");
+      print(diseaseResult);
+      print("RRRRRRRRRRRR");
+      print('The disease detected is: $diseaseResult.');
     } else {
       print('Request failed with status: ${response.statusCode}.');
     }
-    setState(() {
-    });
+
+    print("GGGGGGGGG");
+    print(diseaseResult);
+    print("GGGGGGGGG");
+    setState(() => this.diseaseResult = diseaseResult);
   }
   Future pickImage() async {
     try {
@@ -177,12 +177,13 @@ class uploadImage extends State<myApp>{
                         ),
                       ),
                       child: Text("Start Detection"),
-                      onPressed: (){
+                      onPressed: ()async{
                         imageToApi();
-                        navigateToSecondPage();
-                        getResult();
+                        await getResult();
                         print("ASDasdasd");
+                        print(diseaseResult);
                         print(widget.email);
+                        navigateToSecondPage();
                       },
                     ),
                   ): SizedBox(width: 10,height: 10,),
@@ -193,6 +194,6 @@ class uploadImage extends State<myApp>{
     );
   }
   void navigateToSecondPage(){
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>myResult(email: widget.email,password: widget.password,)));
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>myResult(email: widget.email,res: diseaseResult,)));
   }
 }
