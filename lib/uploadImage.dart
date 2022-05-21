@@ -43,7 +43,7 @@ class uploadImage extends State<myApp>{
 
   imageToApi() async{
     final request = http.MultipartRequest(
-        "POST", Uri.parse("https://d9ab-156-195-145-103.eu.ngrok.io"));
+        "POST", Uri.parse("https://2008-197-39-69-189.eu.ngrok.io/user/detect"));
     final headers ={"Content-type":"multipart/form-data"};
     request.files.add(http.MultipartFile('image',
         selectedImage!.readAsBytes().asStream(),selectedImage!.lengthSync(),
@@ -58,7 +58,7 @@ class uploadImage extends State<myApp>{
   }
   Future<void> getResult()async{
     var response=
-    await http.get(Uri.parse("https://d9ab-156-195-145-103.eu.ngrok.io"));
+    await http.get(Uri.parse("https://2008-197-39-69-189.eu.ngrok.io/user/detect"));
     if (response.statusCode == 200) {
       var jsonResponse =
       jsonDecode(response.body);
@@ -69,7 +69,9 @@ class uploadImage extends State<myApp>{
       print("RRRRRRRRRRRR");
       print('The disease detected is: $diseaseResult.');
     } else {
+      print("QQQQQQQQQQQQQQQQQQQQ");
       print('Request failed with status: ${response.statusCode}.');
+      print("UUUUUUUUUUUUUU");
     }
 
     print("GGGGGGGGG");
@@ -177,9 +179,9 @@ class uploadImage extends State<myApp>{
                         ),
                       ),
                       child: Text("Start Detection"),
-                      onPressed: ()async{
+                      onPressed: (){
                         imageToApi();
-                        await getResult();
+                        getResult();
                         print("ASDasdasd");
                         print(diseaseResult);
                         print(widget.email);

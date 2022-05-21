@@ -30,14 +30,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     Container(
       alignment: Alignment.topLeft,
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-            colors: [
-              Colors.blue,
-              Colors.red,
-            ],
-          )),
+        color: Colors.red
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,

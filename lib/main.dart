@@ -4,6 +4,7 @@ import 'package:untitled/Acne.dart';
 import 'package:untitled/dchat.dart';
 import 'package:untitled/patientchat.dart';
 import 'package:untitled/result.dart';
+import 'package:untitled/protection.dart';
 import 'package:untitled/signup.dart';
 import 'package:untitled/welcome.dart';
 import 'package:untitled/Login.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
 
       ),
-      home: SafeArea(child: myResult()),
+      home: SafeArea(child: MyHomePage()),
 
     );
   }
