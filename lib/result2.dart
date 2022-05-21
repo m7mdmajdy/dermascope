@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:untitled/Login.dart';
 import 'package:http/http.dart' as http;
+import 'package:untitled/protection.dart';
 import 'package:untitled/uploadImage.dart' as uu;
 class myResultPage extends StatelessWidget{
 
@@ -33,7 +34,7 @@ class resultImage extends State<myResult>{
   Future getResult()async{
 
     var response=
-    await http.get(Uri.parse("https://e87b-156-195-145-103.eu.ngrok.io"));
+    await http.get(Uri.parse("https://d9ab-156-195-145-103.eu.ngrok.io"));
     print("OOOOOOOOOOOOOOOOOO");
 
     if (response.statusCode == 200) {
@@ -56,7 +57,7 @@ class resultImage extends State<myResult>{
     print("ZZZZZZZZZZZZ");
     print(result);
     try{
-      var response = await http.post(Uri.parse("https://7bd2-156-195-100-159.eu.ngrok.io/user/detect"),
+      var response = await http.post(Uri.parse("https://d9ab-156-195-145-103.eu.ngrok.io"),
           body: {
             "email": enteredEmail.toString(),
             "image": result
@@ -169,25 +170,44 @@ class resultImage extends State<myResult>{
             padding: const EdgeInsets.all(100.0),
             child: Align(alignment:Alignment.bottomLeft,
               child:
-              RaisedButton(
-                onPressed: (){
-                  getResult();
-                  setState(() {
-                    newForm();
-                  });
-                  print(widget.email);
-                  print(diseaseResult);
-                  sendResult(widget.email, widget.res.toString());
+              Column(
+                children: [
+                  RaisedButton(
+                  onPressed: (){
+                    getResult();
+                    setState(() {
+                      newForm();
+                    });
+                    print(widget.email);
+                    print(diseaseResult);
+                    sendResult(widget.email, widget.res.toString());
                   },
-                color: Colors.blue,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                child: Text(
+                  color: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Text(
 
-                  "Click here to show result",
-                  style: TextStyle(
-                    color: Colors.white,)
-                  ,),
+                    "Click here to show result",
+                    style: TextStyle(
+                      color: Colors.white,)
+                    ,),
+                ),
+                  RaisedButton(
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>protection()));
+                    },
+                    color: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Text(
+
+                      "More information",
+                      style: TextStyle(
+                        color: Colors.white,)
+                      ,),
+                  ),
+
+                ]
               ),
             ),
           ),
@@ -196,9 +216,9 @@ class resultImage extends State<myResult>{
       ),
     );
   }
-Widget newForm (){
+  Widget newForm (){
     return Text("SSSSS");
-}
+  }
 }
 class Results{
   String res="";
