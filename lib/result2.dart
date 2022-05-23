@@ -30,11 +30,12 @@ class myResult extends StatefulWidget{
   State<myResult> createState() => resultImage();
 }
 class resultImage extends State<myResult>{
+  late var finalResult;
   var diseaseResult;
   Future getResult()async{
 
     var response=
-    await http.get(Uri.parse("https://2008-197-39-69-189.eu.ngrok.io/user/detect"));
+    await http.get(Uri.parse("https://66fd-156-195-38-242.eu.ngrok.io/user/detect"));
     print("OOOOOOOOOOOOOOOOOO");
 
     if (response.statusCode == 200) {
@@ -45,19 +46,25 @@ class resultImage extends State<myResult>{
       print("@@@@@@@@@@@@@@@@");
       diseaseResult = jsonResponse['resssss'];
       print('Number of books about http: $diseaseResult.');
+      print("================");
+      print(diseaseResult);
+      print("==============");
+      finalResult=diseaseResult;
+      print(finalResult);
     } else {
       print('Request failed with status: ${response.statusCode}.');
     }
 
     setState(() {
     });
+    sendResult(widget.email, finalResult.toString());
   }
 
   sendResult(var enteredEmail,var result)async{
     print("ZZZZZZZZZZZZ");
     print(result);
     try{
-      var response = await http.post(Uri.parse("https://2008-197-39-69-189.eu.ngrok.io/user/save"),
+      var response = await http.post(Uri.parse("https://66fd-156-195-38-242.eu.ngrok.io/user/save"),
           body: {
             "email": enteredEmail.toString(),
             "image": result
@@ -173,14 +180,16 @@ class resultImage extends State<myResult>{
               Column(
                 children: [
                   RaisedButton(
-                  onPressed: (){
+                  onPressed: ()async{
                     getResult();
                     setState(() {
                       newForm();
                     });
                     print(widget.email);
                     print(diseaseResult);
-                    sendResult(widget.email, widget.res.toString());
+                    print("[[[[[[[[[[[[[");
+                    print(finalResult);
+                    print("[[[[[[[[[[[[[");
                   },
                   color: Colors.blue,
                   shape: RoundedRectangleBorder(
