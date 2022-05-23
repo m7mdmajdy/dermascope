@@ -43,7 +43,7 @@ class uploadImage extends State<myApp>{
 
   imageToApi() async{
     final request = http.MultipartRequest(
-        "POST", Uri.parse("https://10d2-156-195-38-242.eu.ngrok.io/user/detect"));
+        "POST", Uri.parse("https://1d67-156-195-38-242.eu.ngrok.io/user/detect"));
     final headers ={"Content-type":"multipart/form-data"};
     request.files.add(http.MultipartFile('image',
         selectedImage!.readAsBytes().asStream(),selectedImage!.lengthSync(),
@@ -55,29 +55,6 @@ class uploadImage extends State<myApp>{
     message = resJson['message'];
     setState(() {
     });
-  }
-  Future<void> getResult()async{
-    var response=
-    await http.get(Uri.parse("https://10d2-156-195-38-242.eu.ngrok.io/user/detect"));
-    if (response.statusCode == 200) {
-      var jsonResponse =
-      jsonDecode(response.body);
-      print("@@@@@@@@@@@@@@@@");
-      this.diseaseResult =jsonResponse['resssss'].toString();
-      print("RRRRRRRRRRRR");
-      print(diseaseResult);
-      print("RRRRRRRRRRRR");
-      print('The disease detected is: $diseaseResult.');
-    } else {
-      print("QQQQQQQQQQQQQQQQQQQQ");
-      print('Request failed with status: ${response.statusCode}.');
-      print("UUUUUUUUUUUUUU");
-    }
-
-    print("GGGGGGGGG");
-    print(diseaseResult);
-    print("GGGGGGGGG");
-    setState(() => this.diseaseResult = diseaseResult);
   }
   Future pickImage() async {
     try {

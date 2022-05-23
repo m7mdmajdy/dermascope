@@ -35,7 +35,7 @@ class resultImage extends State<myResult>{
   Future getResult()async{
 
     var response=
-    await http.get(Uri.parse("https://10d2-156-195-38-242.eu.ngrok.io/user/detect"));
+    await http.get(Uri.parse("https://1d67-156-195-38-242.eu.ngrok.io/user/detect"));
     print("OOOOOOOOOOOOOOOOOO");
 
     if (response.statusCode == 200) {
@@ -64,7 +64,7 @@ class resultImage extends State<myResult>{
     print("ZZZZZZZZZZZZ");
     print(result);
     try{
-      var response = await http.post(Uri.parse("https://10d2-156-195-38-242.eu.ngrok.io/user/save"),
+      var response = await http.post(Uri.parse("https://1d67-156-195-38-242.eu.ngrok.io/user/save"),
           body: {
             "email": enteredEmail.toString(),
             "image": result
