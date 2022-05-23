@@ -43,7 +43,7 @@ class uploadImage extends State<myApp>{
 
   imageToApi() async{
     final request = http.MultipartRequest(
-        "POST", Uri.parse("https://66fd-156-195-38-242.eu.ngrok.io/user/detect"));
+        "POST", Uri.parse("https://10d2-156-195-38-242.eu.ngrok.io/user/detect"));
     final headers ={"Content-type":"multipart/form-data"};
     request.files.add(http.MultipartFile('image',
         selectedImage!.readAsBytes().asStream(),selectedImage!.lengthSync(),
@@ -58,7 +58,7 @@ class uploadImage extends State<myApp>{
   }
   Future<void> getResult()async{
     var response=
-    await http.get(Uri.parse("https://66fd-156-195-38-242.eu.ngrok.io/user/detect"));
+    await http.get(Uri.parse("https://10d2-156-195-38-242.eu.ngrok.io/user/detect"));
     if (response.statusCode == 200) {
       var jsonResponse =
       jsonDecode(response.body);

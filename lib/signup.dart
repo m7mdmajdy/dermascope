@@ -7,10 +7,32 @@ import 'package:untitled/uploadImage.dart';
 import 'package:untitled/uploadImage.dart';
 
 class signUp extends StatelessWidget {
+  var nameController = TextEditingController();
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+  var phoneController = TextEditingController();
+  var dateController = TextEditingController();
 
-  int radioGender=1;
-  String groupGender='';
+  sendInfo(var enteredName,var enteredEmail,var enteredPassword)async{
+    try{
+      var response = await http.post(Uri.parse("https://10d2-156-195-38-242.eu.ngrok.io/user/signup"),
+          body: {
+            "name": enteredPassword.toString(),
+            "email":enteredPassword.toString(),
+            "password":enteredPassword.toString()
+          }
+      );
+      print(response.body);
+      print(enteredName);
+      print(enteredEmail);
+      print(enteredPassword);
+      print("Signed up successfully");
 
+    } catch(e){
+      print("ERRRRRRRRRRRRRRRRRRRRRR");
+      print(e);
+    }
+  }
   final TextEditingController _dateOfBirthController =
   TextEditingController(text: "01-01-2000");
   InputDecoration _getTextFieldWithCalendarIconDecoration() {
@@ -32,11 +54,6 @@ class signUp extends StatelessWidget {
       ),
     );
   }
-  var nameController = TextEditingController();
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
-  var phoneController = TextEditingController();
-  var dateController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -231,10 +248,15 @@ class signUp extends StatelessWidget {
 
                             onPressed: ()
                             {
+                              sendInfo(nameController.text, emailController.text, passwordController.text);
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>myApp()));
-                              print(emailController.text);
-                              print(passwordController.text);
+                              print("NNNNNNNNNN");
                               print(nameController.text);
+                              print("MMMMMMMMMMMM");
+                              print(emailController.text);
+                              print("***********");
+                              print(passwordController.text);
+
 
                             },
                             child: Padding(
