@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
 
       ),
-      home: SafeArea(child: MyHomePage()),
+      home: SafeArea(child: Chat()),
 
     );
   }

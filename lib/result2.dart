@@ -35,7 +35,7 @@ class resultImage extends State<myResult>{
   Future getResult()async{
 
     var response=
-    await http.get(Uri.parse("https://1d67-156-195-38-242.eu.ngrok.io/user/detect"));
+    await http.get(Uri.parse("https://8149-197-39-123-113.eu.ngrok.io/user/detect"));
     print("OOOOOOOOOOOOOOOOOO");
 
     if (response.statusCode == 200) {
@@ -64,7 +64,7 @@ class resultImage extends State<myResult>{
     print("ZZZZZZZZZZZZ");
     print(result);
     try{
-      var response = await http.post(Uri.parse("https://1d67-156-195-38-242.eu.ngrok.io/user/save"),
+      var response = await http.post(Uri.parse("https://8149-197-39-123-113.eu.ngrok.io/user/save"),
           body: {
             "email": enteredEmail.toString(),
             "image": result
@@ -85,7 +85,12 @@ class resultImage extends State<myResult>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xff35698A),
       appBar: AppBar(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+          ),),
         centerTitle: true,
         toolbarHeight: 50,
         backgroundColor: HexColor("#4c8cb5"),

@@ -43,7 +43,7 @@ class uploadImage extends State<myApp>{
 
   imageToApi() async{
     final request = http.MultipartRequest(
-        "POST", Uri.parse("https://1d67-156-195-38-242.eu.ngrok.io/user/detect"));
+        "POST", Uri.parse("https://8149-197-39-123-113.eu.ngrok.io/user/detect"));
     final headers ={"Content-type":"multipart/form-data"};
     request.files.add(http.MultipartFile('image',
         selectedImage!.readAsBytes().asStream(),selectedImage!.lengthSync(),
@@ -80,7 +80,13 @@ class uploadImage extends State<myApp>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color(0xff35698A),
         appBar: AppBar(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30),
+            ),),
+          //backgroundColor: Color(0xffC1D6F1FF),
           leading: Icon(Icons.image),
           toolbarHeight: 45,
           backgroundColor: HexColor("#4c8cb5"),
