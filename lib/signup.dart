@@ -5,8 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:untitled/uploadImage.dart';
-import 'package:untitled/uploadImage.dart';
+import 'package:untitled/Login.dart';
 
 class signUp extends StatefulWidget {
   @override
@@ -33,21 +32,15 @@ class _signUpState extends State<signUp> {
             "password":enteredPassword.toString()
           }
       );
-      print(response.body);
-      print(enteredName);
-      print(enteredEmail);
-      print(enteredPassword);
-      print("Signed up successfully");
 
       if(response.statusCode==200){
-        Navigator.push(this.context, MaterialPageRoute(builder: (context)=>myApp()));
+        signedUpSuccessfully(context);
       }
       else {
         alreadyExist(context);
       }
 
     } catch(e){
-      print("ERRRRRRRRRRRRRRRRRRRRRR");
       print(e);
     }
   }
@@ -368,6 +361,33 @@ class _signUpState extends State<signUp> {
     AlertDialog alert = AlertDialog(
       title: Text("Can't login"),
       content: Text("This email is already signed up"),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+  signedUpSuccessfully(BuildContext context) {
+
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Well done!"),
+      content: Text("Your account has been created successfully.Now log in again"),
       actions: [
         okButton,
       ],
