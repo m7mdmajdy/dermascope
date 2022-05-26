@@ -1,18 +1,53 @@
 /*done*/
+import 'dart:developer';
 import 'dart:ui';
+import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:untitled/uploadImage.dart';
-import 'package:untitled/uploadImage.dart';
+import 'package:untitled/Login.dart';
 
-class signUp extends StatelessWidget {
+class signUp extends StatefulWidget {
+  @override
+  State<signUp> createState() => _signUpState();
+}
 
-  int radioGender=1;
-  String groupGender='';
+class _signUpState extends State<signUp> {
+  var nameController = TextEditingController();
+
+  var emailController = TextEditingController();
+
+  var passwordController = TextEditingController();
+
+  var phoneController = TextEditingController();
+
+  var dateController = TextEditingController();
+
+  sendInfo(var enteredName,var enteredEmail,var enteredPassword)async{
+    try{
+      var response = await http.post(Uri.parse("https://8149-197-39-123-113.eu.ngrok.io/user/signup"),
+          body: {
+            "name": enteredName.toString(),
+            "email":enteredEmail.toString(),
+            "password":enteredPassword.toString()
+          }
+      );
+
+      if(response.statusCode==200){
+        signedUpSuccessfully(context);
+      }
+      else {
+        alreadyExist(context);
+      }
+
+    } catch(e){
+      print(e);
+    }
+  }
 
   final TextEditingController _dateOfBirthController =
   TextEditingController(text: "01-01-2000");
+
   InputDecoration _getTextFieldWithCalendarIconDecoration() {
     return InputDecoration(
       labelText: 'Date of birth',
@@ -32,11 +67,7 @@ class signUp extends StatelessWidget {
       ),
     );
   }
-  var nameController = TextEditingController();
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
-  var phoneController = TextEditingController();
-  var dateController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -207,6 +238,12 @@ class signUp extends StatelessWidget {
                                   lastDate: DateTime.now())
                                   .then((date) {
                                 //code to handle date
+                                setState(() {
+                                  DateTime now = DateTime.now();
+                                  var formattedDate = DateFormat('EEEE, MMM d, yyyy').format(now);
+                                  print(formattedDate);
+                                  _dateOfBirthController.text=convertDateTimeDisplay(date.toString());
+                                });
                                 print(date.toString());
                               });
                             },
@@ -231,10 +268,24 @@ class signUp extends StatelessWidget {
 
                             onPressed: ()
                             {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>myApp()));
-                              print(emailController.text);
-                              print(passwordController.text);
-                              print(nameController.text);
+                              var emailText=emailController.text;
+                              var passText=passwordController.text;
+                              var phoneText=phoneController.text;
+                              bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(emailText);
+                              bool passwordValid=RegExp(r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$").hasMatch(passText);
+                              var passwordText=passwordController.text;
+                              if(emailText==""||passwordText==""){
+                                showAlertDialog(context);
+                              }
+                              else if(emailValid==false||passwordValid==false||phoneText==""){
+                                showAlertDialog(context);
+                              }
+                              else
+                              {
+                                sendInfo(nameController.text, emailController.text, passwordController.text);
+
+                              }
+
 
                             },
                             child: Padding(
@@ -260,6 +311,95 @@ class signUp extends StatelessWidget {
           ),
         ),
       );
+  }
+  String convertDateTimeDisplay(String date) {
+    final DateFormat displayFormater = DateFormat('yyyy-MM-dd HH:mm:ss.SSS');
+    final DateFormat serverFormater = DateFormat('dd-MM-yyyy');
+    final DateTime displayDate = displayFormater.parse(date);
+    final String formatted = serverFormater.format(displayDate);
+    return formatted;
+  }
+
+  showAlertDialog(BuildContext context) {
+
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>signUp()));
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Can't login"),
+      content: Text("Invalid email or password."),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+  alreadyExist(BuildContext context) {
+
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>signUp()));
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Can't login"),
+      content: Text("This email is already signed up"),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+  signedUpSuccessfully(BuildContext context) {
+
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Well done!"),
+      content: Text("Your account has been created successfully.Now log in again"),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 }
 

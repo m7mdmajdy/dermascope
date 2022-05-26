@@ -115,6 +115,105 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         height: 2.5),
                   ),
                 ],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "*To keep your pores from clogging and your skin from becoming too oily:",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    color: Color.fromARGB(255, 19, 9, 111),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic,
+                    height: 1.5),
+              ),
+              Text(
+                "1-avoid touching your face.",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                    height:2.5),
+              ),
+              Text(
+                "2-Don't leave makeup on oveernight.",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                    height:2.5),
+              ),
+              Text(
+                "3-If your skin is greasy and acne-prone, a wash containing salicylic acid or benzoyl may be beneficial.",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                    height:2.5),
+              ),
+              Text(
+                "4-wash your hands once or twise a day, as well as after your excersise.",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                    height:2.5),
+              ),
+              Text(
+                "5-scrubing and repetitive skin cleaning should be avoided.",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                    height:2.5),
+              ),
+              Text(
+                "6-If your hair is oily, shampoo it every day.",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                    height:2.5),
+              ),
+              Text(
+                "7-keep your hair out of your face be combing or pulling it back.",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                    height: 2.5),
+              ),
+              Text(
+                "8-Avoid using rubbing alcohol or skin toners that are extremly dring.",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                    height:2.5),
+              ),
+              Text(
+                "9-Oil-based cosmatics should be avoided.",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                    height: 2.5),
               ),
             ),
           ],

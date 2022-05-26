@@ -30,11 +30,12 @@ class myResult extends StatefulWidget{
   State<myResult> createState() => resultImage();
 }
 class resultImage extends State<myResult>{
+  late var finalResult;
   var diseaseResult;
   Future getResult()async{
 
     var response=
-    await http.get(Uri.parse("https://d9ab-156-195-145-103.eu.ngrok.io"));
+    await http.get(Uri.parse("https://8149-197-39-123-113.eu.ngrok.io/user/detect"));
     print("OOOOOOOOOOOOOOOOOO");
 
     if (response.statusCode == 200) {
@@ -45,19 +46,25 @@ class resultImage extends State<myResult>{
       print("@@@@@@@@@@@@@@@@");
       diseaseResult = jsonResponse['resssss'];
       print('Number of books about http: $diseaseResult.');
+      print("================");
+      print(diseaseResult);
+      print("==============");
+      finalResult=diseaseResult;
+      print(finalResult);
     } else {
       print('Request failed with status: ${response.statusCode}.');
     }
 
     setState(() {
     });
+    sendResult(widget.email, finalResult.toString());
   }
 
   sendResult(var enteredEmail,var result)async{
     print("ZZZZZZZZZZZZ");
     print(result);
     try{
-      var response = await http.post(Uri.parse("https://d9ab-156-195-145-103.eu.ngrok.io"),
+      var response = await http.post(Uri.parse("https://8149-197-39-123-113.eu.ngrok.io/user/save"),
           body: {
             "email": enteredEmail.toString(),
             "image": result
@@ -78,141 +85,162 @@ class resultImage extends State<myResult>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xff35698A),
       appBar: AppBar(
-        toolbarHeight: 78,
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
-        title: Text(
-          'Result',
-          style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
-        ),
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.arrow_back,
-            size: 35.0,
-          ),
-        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+          ),),
         centerTitle: true,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            color: Colors.blue,
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20)),
-          ),
-        ),
+        toolbarHeight: 50,
+        backgroundColor: HexColor("#4c8cb5"),
+        title: const Text("Result"),
+        automaticallyImplyLeading: false,
+        titleTextStyle: TextStyle(fontSize: 25),
+        foregroundColor: Colors.white,
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
+      body: Container(
+        color: HexColor("#35698A"),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
 
-            child: /*Text(
-              'Acne',
-              style: TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blueAccent),
-            ),*/
-            diseaseResult != null ? Text(
-              diseaseResult,
-              style: TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blueAccent),
-            ): Text(
-              " ",
-              style: TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blueAccent),
-            ),
-          ),
-          /*Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 15.0,
-              ),
-              Expanded(
-                child: Image(
-                  image: NetworkImage(
-                      'https://assets.nhs.uk/nhsuk-cms/images/S_0917_acne_M1080444.max-600x600.jpg'),
-                ),
-              ),
-              SizedBox(
-                width: 15.0,
-              ),
-              Expanded(
-                child: Image(
-                  image: NetworkImage(
-                      'https://assets.nhs.uk/nhsuk-cms/images/S_0917_acne_M1080444.max-600x600.jpg'),
-                ),
-              ),
-              SizedBox(
-                width: 15.0,
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('Acne is a skin condition that occurs when your hair follicles become plugged with oil and dead skin cells. It causes whiteheads, blackheads or pimples. Acne is most common among teenagers, though it affects people of all ages.' ,
-              style:
-              TextStyle(
-                fontSize:25.0,
-                color: Colors.black87,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),*/
-          Padding(
-            padding: const EdgeInsets.all(100.0),
-            child: Align(alignment:Alignment.bottomLeft,
               child:
-              Column(
+              diseaseResult != null ? Column(
                 children: [
-                  RaisedButton(
-                  onPressed: (){
-                    getResult();
-                    setState(() {
-                      newForm();
-                    });
-                    print(widget.email);
-                    print(diseaseResult);
-                    sendResult(widget.email, widget.res.toString());
-                  },
-                  color: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Text(
-
-                    "Click here to show result",
+                  SizedBox(height: 100,),
+                  Text(
+                    "The detected disease is:",
                     style: TextStyle(
-                      color: Colors.white,)
-                    ,),
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.lightBlue),
+                  ),
+                  SizedBox(height: 10,),
+                  Text(
+                  diseaseResult,
+                  style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.yellow),
                 ),
-                  RaisedButton(
-                    onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>protection()));
-                    },
-                    color: Colors.blue,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Text(
-
-                      "More information",
-                      style: TextStyle(
-                        color: Colors.white,)
-                      ,),
+                  SizedBox(height: 100,),
+                  Text(
+                    "Click on the button below to know more about the disease",
+                    style: TextStyle(
+                        fontSize: 17.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white70),
                   ),
 
                 ]
+              ): Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height: 200),
+                  Text(
+                    "Thank you for using Dermascope!",
+                    style: TextStyle(
+                        fontSize: 22.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white60),
+                  ),
+                  SizedBox(height: 70),
+                  Row(
+                    children: [
+                      Icon(Icons.check_circle,size: 35,color: Colors.white.withOpacity(0.3),),
+                      Text(
+                      "The result is ready for you!",
+                      style: TextStyle(
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white60),
+                    ),
+                    ]
+                  )
+                ],
+              )
+            ),
+            Padding(
+              padding: const EdgeInsets.all(100.0),
+              child: Align(alignment:Alignment.bottomLeft,
+                child:
+                Column(
+                  children: [
+                    diseaseResult==null?ElevatedButton(
+                    onPressed: ()async{
+                      getResult();
+                      setState(() {
+                        newForm();
+                      });
+                      print(widget.email);
+                      print(diseaseResult);
+                      print("[[[[[[[[[[[[[");
+                      print(finalResult);
+                      print("[[[[[[[[[[[[[");
+                    },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(100.0),
+                              side: BorderSide(color: HexColor("#4c8cb5"))
+                          ),
+                        ),
+                      ),
+                    child: Text(
+
+                      "Click here to show result",
+                      style: TextStyle(
+                        color: Colors.white,)
+                      ,),
+                  )
+                        :
+                        SizedBox(height: 0,),
+                    diseaseResult != null? /*RaisedButton(
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>protection()));
+                      },
+                      color: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Text(
+
+                        "More information",
+                        style: TextStyle(
+                          color: Colors.white,)
+                        ,),
+                    )*/
+                    ElevatedButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>protection()));},
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(100.0),
+                              side: BorderSide(color: HexColor("#4c8cb5"))
+                          ),
+                        ),
+                      ),
+                      child: Row(children: [
+                        Icon(Icons.info_outline),
+                        SizedBox(width: 5,),
+                        Text("More information",
+                          style: TextStyle(fontSize: 16),
+                        )
+
+                      ]),)
+                        :
+                Text("")
+
+                  ]
+                ),
               ),
             ),
-          ),
 
-        ],
+          ],
+        ),
       ),
     );
   }

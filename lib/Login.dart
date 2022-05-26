@@ -2,23 +2,40 @@ import 'dart:ui';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:untitled/signup.dart';
 import 'package:path/path.dart';
+import 'package:untitled/signup.dart';
 import 'package:untitled/uploadImage.dart';
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
 
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
   var emailController = TextEditingController();
+
   var passwordController = TextEditingController();
 
   postData(var enteredEmail,var enteredPassword)async{
     try{
-      var response = await http.post(Uri.parse("https://7bd2-156-195-100-159.eu.ngrok.io/user/login"),
+      var response = await http.post(Uri.parse("https://8149-197-39-123-113.eu.ngrok.io/user/login"),
         body: {
         "email": enteredEmail.toString(),
           "password":enteredPassword.toString()
         }
       );
       print(response.body);
+      var fe=response.body.toString();
+      print(fe);
+      print(fe.runtimeType);
+
+      if(response.statusCode==200){
+        Navigator.push(this.context, MaterialPageRoute(builder: (context)=>myApp(email: enteredEmail,password: enteredPassword,)));
+      }
+      else{
+        showAlertDialog(this.context);
+      }
+
       print("Email and password has successfully sent to api");
 
     } catch(e){
@@ -165,7 +182,6 @@ class Login extends StatelessWidget {
                                   else
                                     {
                                       postData(emailText, passText);
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>myApp(email: emailText,password: passText,)));
 
                                     }
 
@@ -211,6 +227,7 @@ class Login extends StatelessWidget {
       ),
     );
   }
+
   showAlertDialog(BuildContext context) {
 
     // set up the button

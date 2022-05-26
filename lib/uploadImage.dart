@@ -43,7 +43,7 @@ class uploadImage extends State<myApp>{
 
   imageToApi() async{
     final request = http.MultipartRequest(
-        "POST", Uri.parse("https://d9ab-156-195-145-103.eu.ngrok.io"));
+        "POST", Uri.parse("https://8149-197-39-123-113.eu.ngrok.io/user/detect"));
     final headers ={"Content-type":"multipart/form-data"};
     request.files.add(http.MultipartFile('image',
         selectedImage!.readAsBytes().asStream(),selectedImage!.lengthSync(),
@@ -55,27 +55,6 @@ class uploadImage extends State<myApp>{
     message = resJson['message'];
     setState(() {
     });
-  }
-  Future<void> getResult()async{
-    var response=
-    await http.get(Uri.parse("https://d9ab-156-195-145-103.eu.ngrok.io"));
-    if (response.statusCode == 200) {
-      var jsonResponse =
-      jsonDecode(response.body);
-      print("@@@@@@@@@@@@@@@@");
-      this.diseaseResult =jsonResponse['resssss'].toString();
-      print("RRRRRRRRRRRR");
-      print(diseaseResult);
-      print("RRRRRRRRRRRR");
-      print('The disease detected is: $diseaseResult.');
-    } else {
-      print('Request failed with status: ${response.statusCode}.');
-    }
-
-    print("GGGGGGGGG");
-    print(diseaseResult);
-    print("GGGGGGGGG");
-    setState(() => this.diseaseResult = diseaseResult);
   }
   Future pickImage() async {
     try {
@@ -101,7 +80,13 @@ class uploadImage extends State<myApp>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color(0xff35698A),
         appBar: AppBar(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30),
+            ),),
+          //backgroundColor: Color(0xffC1D6F1FF),
           leading: Icon(Icons.image),
           toolbarHeight: 45,
           backgroundColor: HexColor("#4c8cb5"),
@@ -177,9 +162,8 @@ class uploadImage extends State<myApp>{
                         ),
                       ),
                       child: Text("Start Detection"),
-                      onPressed: ()async{
+                      onPressed: (){
                         imageToApi();
-                        await getResult();
                         print("ASDasdasd");
                         print(diseaseResult);
                         print(widget.email);
