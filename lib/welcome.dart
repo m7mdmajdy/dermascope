@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 class SecondPage extends StatelessWidget {
   const SecondPage({Key? key}) : super(key: key);
 
@@ -10,3 +10,4 @@ class SecondPage extends StatelessWidget {
     );
   }
 }
+*/
