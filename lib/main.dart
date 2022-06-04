@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
 
       ),
-      home:Acne(),
+      home:SafeArea(child: MyHomePage()),
     );
   }
 }

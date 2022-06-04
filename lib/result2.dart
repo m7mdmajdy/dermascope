@@ -35,7 +35,7 @@ class resultImage extends State<myResult>{
   Future getResult()async{
 
     var response=
-    await http.get(Uri.parse("https://8149-197-39-123-113.eu.ngrok.io/user/detect"));
+    await http.get(Uri.parse("https://6523-197-39-38-140.eu.ngrok.io/user/detect"));
     print("OOOOOOOOOOOOOOOOOO");
 
     if (response.statusCode == 200) {
@@ -64,7 +64,7 @@ class resultImage extends State<myResult>{
     print("ZZZZZZZZZZZZ");
     print(result);
     try{
-      var response = await http.post(Uri.parse("https://8149-197-39-123-113.eu.ngrok.io/user/save"),
+      var response = await http.post(Uri.parse("https://6523-197-39-38-140.eu.ngrok.io/user/save"),
           body: {
             "email": enteredEmail.toString(),
             "image": result
@@ -84,162 +84,177 @@ class resultImage extends State<myResult>{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xff35698A),
-      appBar: AppBar(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(30),
-          ),),
-        centerTitle: true,
-        toolbarHeight: 50,
-        backgroundColor: HexColor("#4c8cb5"),
-        title: const Text("Result"),
-        automaticallyImplyLeading: false,
-        titleTextStyle: TextStyle(fontSize: 25),
-        foregroundColor: Colors.white,
-      ),
-      body: Container(
-        color: HexColor("#35698A"),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Color(0xff35698A),
+        appBar: AppBar(
+          leading: InkWell(
+            onTap: () {
+              Navigator.pop(context, true);
+            },
+            child: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black54,
+            ),
+          ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(30),
+              ),),
+            backgroundColor: Color(0xffC1D6F1FF),
+          centerTitle: true,
+          toolbarHeight: 50,
+          title: const Text("Result",
+              style:TextStyle(
+              color: Color(0xff35698A)  , fontWeight:FontWeight.bold, fontSize: 25.0
+        ),
+          ),
+          automaticallyImplyLeading: false,
+          titleTextStyle: TextStyle(fontSize: 25),
+          foregroundColor: Colors.white,
+        ),
+        body: Container(
+          color: HexColor("#35698A"),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
 
-              child:
-              diseaseResult != null ? Column(
-                children: [
-                  SizedBox(height: 100,),
-                  Text(
-                    "The detected disease is:",
+                child:
+                diseaseResult != null ? Column(
+                  children: [
+                    SizedBox(height: 100,),
+                    Text(
+                      "The detected disease is:",
+                      style: TextStyle(
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.lightBlue),
+                    ),
+                    SizedBox(height: 10,),
+                    Text(
+                    diseaseResult,
                     style: TextStyle(
                         fontSize: 30.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.lightBlue),
+                        color: Colors.yellow),
                   ),
-                  SizedBox(height: 10,),
-                  Text(
-                  diseaseResult,
-                  style: TextStyle(
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.yellow),
-                ),
-                  SizedBox(height: 100,),
-                  Text(
-                    "Click on the button below to know more about the disease",
-                    style: TextStyle(
-                        fontSize: 17.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white70),
-                  ),
-
-                ]
-              ): Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(height: 200),
-                  Text(
-                    "Thank you for using Dermascope!",
-                    style: TextStyle(
-                        fontSize: 22.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white60),
-                  ),
-                  SizedBox(height: 70),
-                  Row(
-                    children: [
-                      Icon(Icons.check_circle,size: 35,color: Colors.white.withOpacity(0.3),),
-                      Text(
-                      "The result is ready for you!",
+                    SizedBox(height: 100,),
+                    Text(
+                      "Click on the button below to know more about the disease",
                       style: TextStyle(
-                          fontSize: 25.0,
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white70),
+                    ),
+
+                  ]
+                ): Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 200),
+                    Text(
+                      "Thank you for using Dermascope!",
+                      style: TextStyle(
+                          fontSize: 22.0,
                           fontWeight: FontWeight.bold,
                           color: Colors.white60),
                     ),
-                    ]
-                  )
-                ],
-              )
-            ),
-            Padding(
-              padding: const EdgeInsets.all(100.0),
-              child: Align(alignment:Alignment.bottomLeft,
-                child:
-                Column(
-                  children: [
-                    diseaseResult==null?ElevatedButton(
-                    onPressed: ()async{
-                      getResult();
-                      setState(() {
-                        newForm();
-                      });
-                      print(widget.email);
-                      print(diseaseResult);
-                      print("[[[[[[[[[[[[[");
-                      print(finalResult);
-                      print("[[[[[[[[[[[[[");
-                    },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(100.0),
-                              side: BorderSide(color: HexColor("#4c8cb5"))
+                    SizedBox(height: 70),
+                    Row(
+                      children: [
+                        Icon(Icons.check_circle,size: 35,color: Colors.white.withOpacity(0.3),),
+                        Text(
+                        "The result is ready for you!",
+                        style: TextStyle(
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white60),
+                      ),
+                      ]
+                    )
+                  ],
+                )
+              ),
+              Padding(
+                padding: const EdgeInsets.all(100.0),
+                child: Align(alignment:Alignment.bottomLeft,
+                  child:
+                  Column(
+                    children: [
+                      diseaseResult==null?ElevatedButton(
+                      onPressed: ()async{
+                        getResult();
+                        setState(() {
+                          newForm();
+                        });
+                        print(widget.email);
+                        print(diseaseResult);
+                        print("[[[[[[[[[[[[[");
+                        print(finalResult);
+                        print("[[[[[[[[[[[[[");
+                      },
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100.0),
+                                side: BorderSide(color: HexColor("#4c8cb5"))
+                            ),
                           ),
                         ),
-                      ),
-                    child: Text(
-
-                      "Click here to show result",
-                      style: TextStyle(
-                        color: Colors.white,)
-                      ,),
-                  )
-                        :
-                        SizedBox(height: 0,),
-                    diseaseResult != null? /*RaisedButton(
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>protection()));
-                      },
-                      color: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
                       child: Text(
 
-                        "More information",
+                        "Click here to show result",
                         style: TextStyle(
                           color: Colors.white,)
                         ,),
-                    )*/
-                    ElevatedButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>protection()));},
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(100.0),
-                              side: BorderSide(color: HexColor("#4c8cb5"))
+                    )
+                          :
+                          SizedBox(height: 0,),
+                      diseaseResult != null? /*RaisedButton(
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>protection()));
+                        },
+                        color: Colors.blue,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Text(
+
+                          "More information",
+                          style: TextStyle(
+                            color: Colors.white,)
+                          ,),
+                      )*/
+                      ElevatedButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>protection()));},
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100.0),
+                                side: BorderSide(color: HexColor("#4c8cb5"))
+                            ),
                           ),
                         ),
-                      ),
-                      child: Row(children: [
-                        Icon(Icons.info_outline),
-                        SizedBox(width: 5,),
-                        Text("More information",
-                          style: TextStyle(fontSize: 16),
-                        )
+                        child: Row(children: [
+                          Icon(Icons.info_outline),
+                          SizedBox(width: 5,),
+                          Text("More information",
+                            style: TextStyle(fontSize: 16),
+                          )
 
-                      ]),)
-                        :
-                Text("")
+                        ]),)
+                          :
+                  Text("")
 
-                  ]
+                    ]
+                  ),
                 ),
               ),
-            ),
 
-          ],
+            ],
+          ),
         ),
       ),
     );

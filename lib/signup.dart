@@ -25,7 +25,7 @@ class _signUpState extends State<signUp> {
 
   sendInfo(var enteredName,var enteredEmail,var enteredPassword)async{
     try{
-      var response = await http.post(Uri.parse("https://8149-197-39-123-113.eu.ngrok.io/user/signup"),
+      var response = await http.post(Uri.parse("https://6523-197-39-38-140.eu.ngrok.io/user/signup"),
           body: {
             "name": enteredName.toString(),
             "email":enteredEmail.toString(),
@@ -70,247 +70,249 @@ class _signUpState extends State<signUp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        /* appBar: AppBar(
-          leading: Icon(Icons.account_circle_rounded),
-          toolbarHeight: 45,
-          backgroundColor: HexColor("#4c8cb5"),
-          title: Text("Create an account",textDirection:TextDirection.ltr),
-          titleTextStyle: TextStyle(fontSize: 20),
-          foregroundColor: Colors.white,
-          actions: <Widget>[
-            // overflow menu
-          ],
-        ),*/
-        body:Container(
-          child: Stack(
-            children: [
-              Opacity(opacity: 0.5,
-                child: ClipPath(
-                  clipper: WaveClipper(),
-                  child: Container(
-                    color: HexColor("#35698A").withOpacity(0.6),
-                    height: 660,
+    return SafeArea(
+      child: Scaffold(
+          /* appBar: AppBar(
+            leading: Icon(Icons.account_circle_rounded),
+            toolbarHeight: 45,
+            backgroundColor: HexColor("#4c8cb5"),
+            title: Text("Create an account",textDirection:TextDirection.ltr),
+            titleTextStyle: TextStyle(fontSize: 20),
+            foregroundColor: Colors.white,
+            actions: <Widget>[
+              // overflow menu
+            ],
+          ),*/
+          body:Container(
+            child: Stack(
+              children: [
+                Opacity(opacity: 0.5,
+                  child: ClipPath(
+                    clipper: WaveClipper(),
+                    child: Container(
+                      color: HexColor("#35698A").withOpacity(0.6),
+                      height: 660,
+                    ),
                   ),
                 ),
-              ),
-              ClipPath(
-                clipper: WaveClipper(),
-                child: Container(
-                  color: HexColor("#35698A"),
-                  height: 640,
-                  child:Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: SingleChildScrollView(
-                      child: Column(
+                ClipPath(
+                  clipper: WaveClipper(),
+                  child: Container(
+                    color: HexColor("#35698A"),
+                    height: 640,
+                    child:Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: SingleChildScrollView(
+                        child: Column(
 
-                        crossAxisAlignment:CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 100.0,
-                          ),
-                          TextFormField(
-                            controller: nameController,
-                            keyboardType: TextInputType.name,
-                            decoration: InputDecoration(
-                              labelText: 'Name',
-                              labelStyle: TextStyle(color: Colors.white),
-                              fillColor:  HexColor("#35698A").withOpacity(0.1), filled: true,
-                              border: OutlineInputBorder(),
-                              prefixIcon: Icon(
-                                Icons.account_circle_outlined,
-                                color: Colors.white,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
-                                borderSide: BorderSide(
+                          crossAxisAlignment:CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: 100.0,
+                            ),
+                            TextFormField(
+                              controller: nameController,
+                              keyboardType: TextInputType.name,
+                              decoration: InputDecoration(
+                                labelText: 'Name',
+                                labelStyle: TextStyle(color: Colors.white),
+                                fillColor:  HexColor("#35698A").withOpacity(0.1), filled: true,
+                                border: OutlineInputBorder(),
+                                prefixIcon: Icon(
+                                  Icons.account_circle_outlined,
                                   color: Colors.white,
-                                  width: 2.0,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25.0),
+                                  borderSide: BorderSide(
+                                    color: Colors.white,
+                                    width: 2.0,
+                                  ),
                                 ),
                               ),
+                              onFieldSubmitted: (String value) {
+                                print(value);
+                              },
                             ),
-                            onFieldSubmitted: (String value) {
-                              print(value);
-                            },
-                          ),
-                          SizedBox(
-                            height: 15.0,
-                          ),
-                          TextFormField(
-                            controller: emailController,
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                              labelText: 'Email Address',
-                              labelStyle: TextStyle(color: Colors.white),
-                              fillColor: HexColor("#35698A").withOpacity(0.1), filled: true,
-                              border: OutlineInputBorder(),
-                              prefixIcon: Icon(
-                                Icons.email,
-                                color: Colors.white,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
-                                borderSide: BorderSide(
+                            SizedBox(
+                              height: 15.0,
+                            ),
+                            TextFormField(
+                              controller: emailController,
+                              keyboardType: TextInputType.emailAddress,
+                              decoration: InputDecoration(
+                                labelText: 'Email Address',
+                                labelStyle: TextStyle(color: Colors.white),
+                                fillColor: HexColor("#35698A").withOpacity(0.1), filled: true,
+                                border: OutlineInputBorder(),
+                                prefixIcon: Icon(
+                                  Icons.email,
                                   color: Colors.white,
-                                  width: 2.0,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25.0),
+                                  borderSide: BorderSide(
+                                    color: Colors.white,
+                                    width: 2.0,
+                                  ),
                                 ),
                               ),
+
+                              onFieldSubmitted: (String value) {
+                                print(value);
+                              },
+                            ),
+                            SizedBox(
+                              height: 15.0,
                             ),
 
-                            onFieldSubmitted: (String value) {
-                              print(value);
-                            },
-                          ),
-                          SizedBox(
-                            height: 15.0,
-                          ),
-
-                          TextFormField(
-                            controller: passwordController,
-                            keyboardType: TextInputType.visiblePassword,
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              labelText: 'Password',
-                              labelStyle: TextStyle(color: Colors.white),
-                              fillColor:  HexColor("#35698A").withOpacity(0.1), filled: true,
-                              border: OutlineInputBorder(),
-                              prefixIcon: Icon(
-                                Icons.lock,
-                                color: Colors.white,
-                              ),
-                              suffixIcon: Icon(
-                                Icons.remove_red_eye,
-                                color: Colors.white,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
-                                borderSide: BorderSide(
+                            TextFormField(
+                              controller: passwordController,
+                              keyboardType: TextInputType.visiblePassword,
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                labelText: 'Password',
+                                labelStyle: TextStyle(color: Colors.white),
+                                fillColor:  HexColor("#35698A").withOpacity(0.1), filled: true,
+                                border: OutlineInputBorder(),
+                                prefixIcon: Icon(
+                                  Icons.lock,
                                   color: Colors.white,
-                                  width: 2.0,
+                                ),
+                                suffixIcon: Icon(
+                                  Icons.remove_red_eye,
+                                  color: Colors.white,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25.0),
+                                  borderSide: BorderSide(
+                                    color: Colors.white,
+                                    width: 2.0,
+                                  ),
                                 ),
                               ),
+                              onFieldSubmitted: (String value) {
+                                print(value);
+                              },
                             ),
-                            onFieldSubmitted: (String value) {
-                              print(value);
-                            },
-                          ),
-                          SizedBox(
-                            height: 15.0,
-                          ),
-                          TextFormField(
-                            controller: phoneController,
-                            keyboardType: TextInputType.phone,
-                            decoration: InputDecoration(
-                              labelText: 'Phone Number',
-                              labelStyle: TextStyle(color: Colors.white),
-                              fillColor:  HexColor("#35698A").withOpacity(0.1),filled: true,
-                              border: OutlineInputBorder(),
-                              prefixIcon: Icon(
-                                Icons.phone,
-                                color: Colors.white,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
-                                borderSide: BorderSide(
+                            SizedBox(
+                              height: 15.0,
+                            ),
+                            TextFormField(
+                              controller: phoneController,
+                              keyboardType: TextInputType.phone,
+                              decoration: InputDecoration(
+                                labelText: 'Phone Number',
+                                labelStyle: TextStyle(color: Colors.white),
+                                fillColor:  HexColor("#35698A").withOpacity(0.1),filled: true,
+                                border: OutlineInputBorder(),
+                                prefixIcon: Icon(
+                                  Icons.phone,
                                   color: Colors.white,
-                                  width: 2.0,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25.0),
+                                  borderSide: BorderSide(
+                                    color: Colors.white,
+                                    width: 2.0,
+                                  ),
                                 ),
                               ),
+
+                              onFieldSubmitted: (String value) {
+                                print(value);
+                              },
+                            ),
+                            SizedBox(
+                              height: 15.0,
                             ),
 
-                            onFieldSubmitted: (String value) {
-                              print(value);
-                            },
-                          ),
-                          SizedBox(
-                            height: 15.0,
-                          ),
-
-                          TextField(
-                            showCursor: true,
-                            readOnly: true,
-                            onTap: () {
-                              showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime(1940),
-                                  lastDate: DateTime.now())
-                                  .then((date) {
-                                //code to handle date
-                                setState(() {
-                                  DateTime now = DateTime.now();
-                                  var formattedDate = DateFormat('EEEE, MMM d, yyyy').format(now);
-                                  print(formattedDate);
-                                  _dateOfBirthController.text=convertDateTimeDisplay(date.toString());
+                            TextField(
+                              showCursor: true,
+                              readOnly: true,
+                              onTap: () {
+                                showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime(1940),
+                                    lastDate: DateTime.now())
+                                    .then((date) {
+                                  //code to handle date
+                                  setState(() {
+                                    DateTime now = DateTime.now();
+                                    var formattedDate = DateFormat('EEEE, MMM d, yyyy').format(now);
+                                    print(formattedDate);
+                                    _dateOfBirthController.text=convertDateTimeDisplay(date.toString());
+                                  });
+                                  print(date.toString());
                                 });
-                                print(date.toString());
-                              });
-                            },
-                            controller: _dateOfBirthController,
-                            decoration: _getTextFieldWithCalendarIconDecoration(),
-                          ),
-                          SizedBox(
-                            height: 30.0,
-                          ),
+                              },
+                              controller: _dateOfBirthController,
+                              decoration: _getTextFieldWithCalendarIconDecoration(),
+                            ),
+                            SizedBox(
+                              height: 30.0,
+                            ),
 
 
-                          ElevatedButton(
-                              style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
-                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(100.0),
-                                          side: BorderSide(color: HexColor("#4c8cb5"))
-                                      )
-                                  )
-                              ),
+                            ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
+                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(100.0),
+                                            side: BorderSide(color: HexColor("#4c8cb5"))
+                                        )
+                                    )
+                                ),
 
-                            onPressed: ()
-                            {
-                              var emailText=emailController.text;
-                              var passText=passwordController.text;
-                              var phoneText=phoneController.text;
-                              bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(emailText);
-                              bool passwordValid=RegExp(r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$").hasMatch(passText);
-                              var passwordText=passwordController.text;
-                              if(emailText==""||passwordText==""){
-                                showAlertDialog(context);
-                              }
-                              else if(emailValid==false||passwordValid==false||phoneText==""){
-                                showAlertDialog(context);
-                              }
-                              else
+                              onPressed: ()
                               {
-                                sendInfo(nameController.text, emailController.text, passwordController.text);
+                                var emailText=emailController.text;
+                                var passText=passwordController.text;
+                                var phoneText=phoneController.text;
+                                bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(emailText);
+                                bool passwordValid=RegExp(r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$").hasMatch(passText);
+                                var passwordText=passwordController.text;
+                                if(emailText==""||passwordText==""){
+                                  showAlertDialog(context);
+                                }
+                                else if(emailValid==false||passwordValid==false||phoneText==""){
+                                  showAlertDialog(context);
+                                }
+                                else
+                                {
+                                  sendInfo(nameController.text, emailController.text, passwordController.text);
 
-                              }
+                                }
 
 
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(13.0),
-                              child: Text(
-                                'Sign Up',
-                                style: TextStyle(color: Colors.white,
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.bold),
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(13.0),
+                                child: Text(
+                                  'Sign Up',
+                                  style: TextStyle(color: Colors.white,
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 15.0,
-                          ),
-                        ],
+                            SizedBox(
+                              height: 15.0,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      );
+    );
   }
   String convertDateTimeDisplay(String date) {
     final DateFormat displayFormater = DateFormat('yyyy-MM-dd HH:mm:ss.SSS');
@@ -326,7 +328,7 @@ class _signUpState extends State<signUp> {
     Widget okButton = TextButton(
       child: Text("OK"),
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>signUp()));
+        Navigator.pop(context, true);
       },
     );
 
@@ -353,7 +355,7 @@ class _signUpState extends State<signUp> {
     Widget okButton = TextButton(
       child: Text("OK"),
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>signUp()));
+        Navigator.pop(context, true);
       },
     );
 
@@ -387,7 +389,7 @@ class _signUpState extends State<signUp> {
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
       title: Text("Well done!"),
-      content: Text("Your account has been created successfully.Now log in again"),
+      content: Text("Your account has been created successfully. Now log in again"),
       actions: [
         okButton,
       ],
