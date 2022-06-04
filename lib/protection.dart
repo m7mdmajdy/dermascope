@@ -115,15 +115,28 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         height: 2.5),
                   ),
                 ],
+              ),
+  ),
+  ],
+  ),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+  ),
+  Container(
+  alignment: Alignment.topLeft,
+  decoration: BoxDecoration(
+  color:  Color(0xff35698A),
+  ),
+  child: SingleChildScrollView(
+  child: Column(
+  mainAxisAlignment: MainAxisAlignment.start,
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+  Padding(
+  padding: const EdgeInsets.all(8.0),
+  child: Column(
+  mainAxisAlignment: MainAxisAlignment.start,
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
               Text(
                 "*To keep your pores from clogging and your skin from becoming too oily:",
                 textAlign: TextAlign.left,
@@ -215,11 +228,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     fontWeight: FontWeight.normal,
                     height: 2.5),
               ),
-            ),
-          ],
-        ),
-      ),
-    ),
+    ],
+  ),
+  ),
+  ],
+  ),
+  ),
+  ),
     Container(
       alignment: Alignment.topLeft,
       decoration: BoxDecoration(
@@ -359,19 +374,22 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         ),
       ),
     ),
-    Container(
-      alignment: Alignment.topLeft,
-      decoration: BoxDecoration(
-        color:  Color(0xff35698A),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+  Container(
+  alignment: Alignment.topLeft,
+  decoration: BoxDecoration(
+  color:  Color(0xff35698A),
+  ),
+  child: SingleChildScrollView(
+  child: Column(
+  mainAxisAlignment: MainAxisAlignment.start,
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+  Padding(
+  padding: const EdgeInsets.all(8.0),
+  child: Column(
+  mainAxisAlignment: MainAxisAlignment.start,
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
               Text(
                 "*Cleanser:-",
                 style: TextStyle(
@@ -459,22 +477,27 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
             ],
           ),
+  ),
         ],
       ),
     ),
-    Container(
-      alignment: Alignment.topLeft,
-      decoration: BoxDecoration(
-          color:  Color(0xff35698A),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+  ),
+  Container(
+  alignment: Alignment.topLeft,
+  decoration: BoxDecoration(
+  color:  Color(0xff35698A),
+  ),
+  child: SingleChildScrollView(
+  child: Column(
+  mainAxisAlignment: MainAxisAlignment.start,
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+  Padding(
+  padding: const EdgeInsets.all(8.0),
+  child: Column(
+  mainAxisAlignment: MainAxisAlignment.start,
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
               Text(
                 "*try over-the-counter acne treatments that you apply th your skin if everyday skin care does not clear up blemishes.",
                 maxLines: 1,
@@ -602,9 +625,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               )
             ],
           ),
-        ],
+  ),
+  ],
       ),
     ),
+  ),
   ];
 
   void _onItemTapped(int index) {
