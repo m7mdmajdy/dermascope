@@ -3,8 +3,19 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:path/path.dart';
+import 'package:untitled/profile.dart';
 import 'package:untitled/signup.dart';
 import 'package:untitled/uploadImage.dart';
+import 'dart:convert';
+import 'dart:ui';
+import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'dart:io';
+import 'package:flutter/services.dart';
+import 'package:untitled/Login.dart';
+import 'package:http/http.dart' as http;
+import 'package:untitled/protection.dart';
+import 'package:untitled/uploadImage.dart' as uu;
 class Login extends StatefulWidget {
 
   @override
@@ -12,13 +23,14 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  var mappedRes;
   var emailController = TextEditingController();
 
   var passwordController = TextEditingController();
 
   postData(var enteredEmail,var enteredPassword)async{
     try{
-      var response = await http.post(Uri.parse("https://36bb-197-39-38-140.eu.ngrok.io/user/login"),
+      var response = await http.post(Uri.parse("https://bb1e-197-39-38-140.eu.ngrok.io/user/login"),
         body: {
         "email": enteredEmail.toString(),
           "password":enteredPassword.toString()
@@ -26,11 +38,13 @@ class _LoginState extends State<Login> {
       );
       print(response.body);
       var fe=response.body.toString();
+      mappedRes = jsonDecode(fe);
       print(fe);
       print(fe.runtimeType);
 
       if(response.statusCode==200){
-        Navigator.push(this.context, MaterialPageRoute(builder: (context)=>myApp(email: enteredEmail,password: enteredPassword,)));
+        Navigator.push(this.context, MaterialPageRoute(builder: (context)=>profile(email: mappedRes['email'],
+          name: mappedRes['name'], lastDiagnose: mappedRes['result'],)));
       }
       else{
         showAlertDialog(this.context);

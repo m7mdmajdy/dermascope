@@ -8,6 +8,7 @@ import 'package:untitled/result.dart';
 import 'package:untitled/protection.dart';
 import 'package:untitled/signup.dart';
 import 'package:untitled/welcome.dart';
+import 'package:untitled/profile.dart';
 import 'package:untitled/Login.dart';
 import 'package:untitled/uploadImage.dart';
 import 'package:untitled/result2.dart';

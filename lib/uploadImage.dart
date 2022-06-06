@@ -26,8 +26,8 @@ class myHomePage extends StatelessWidget{
 }
 class myApp extends StatefulWidget{
   final String? email;
-  final String? password;
-  const myApp({Key? key, this.email, this.password}) : super(key: key);
+
+  const myApp({Key? key, this.email}) : super(key: key);
 
 
 
@@ -47,7 +47,7 @@ class uploadImage extends State<myApp>{
 
   imageToApi() async{
     final request = http.MultipartRequest(
-        "POST", Uri.parse("https://36bb-197-39-38-140.eu.ngrok.io/user/detect"));
+        "POST", Uri.parse("https://bb1e-197-39-38-140.eu.ngrok.io/user/detect"));
     final headers ={"Content-type":"multipart/form-data"};
     request.files.add(http.MultipartFile('image',
         selectedImage!.readAsBytes().asStream(),selectedImage!.lengthSync(),

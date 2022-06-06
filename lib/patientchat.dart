@@ -52,6 +52,7 @@ class Chat extends StatelessWidget {
                   ),
                       (route) => false,
                 );
+
               },
             )
           ],
