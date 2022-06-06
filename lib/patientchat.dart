@@ -1,5 +1,6 @@
 /*done*/
 import 'dart:ui';
+import 'package:untitled/Login.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 
@@ -37,6 +38,23 @@ class Chat extends StatelessWidget {
             ),
           ),
           centerTitle: true,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.logout,
+                color: Colors.black54,
+              ),
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => Login(),
+                  ),
+                      (route) => false,
+                );
+              },
+            )
+          ],
 
         ),
         body:

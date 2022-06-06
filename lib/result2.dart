@@ -32,10 +32,38 @@ class myResult extends StatefulWidget{
 class resultImage extends State<myResult>{
   late var finalResult;
   var diseaseResult;
+  var diseaseRes;
+  var mappedRes;
+
+  Future GetInfo(var diseaseName)async{
+
+    try{
+      var response = await http.post(Uri.parse("https://36bb-197-39-38-140.eu.ngrok.io/diseases"),
+          body: {
+            "disease": diseaseName.toString(),
+          }
+      );
+      diseaseRes=response.body;
+
+      print("888888888888888888888888");
+      //print(diseaseName);
+      print(diseaseRes.runtimeType);
+      print(diseaseRes);
+      mappedRes = jsonDecode(diseaseRes);
+      print(mappedRes.runtimeType);
+      print(mappedRes["protection"]);
+      sleep(const Duration(seconds:2));
+
+    } catch(e){
+      print("ERRRRRRRRRRRRRRRRRRRRRR");
+      print(e);
+    }
+  }
+
   Future getResult()async{
 
     var response=
-    await http.get(Uri.parse("https://6523-197-39-38-140.eu.ngrok.io/user/detect"));
+    await http.get(Uri.parse("https://36bb-197-39-38-140.eu.ngrok.io/user/detect"));
     print("OOOOOOOOOOOOOOOOOO");
 
     if (response.statusCode == 200) {
@@ -64,7 +92,7 @@ class resultImage extends State<myResult>{
     print("ZZZZZZZZZZZZ");
     print(result);
     try{
-      var response = await http.post(Uri.parse("https://6523-197-39-38-140.eu.ngrok.io/user/save"),
+      var response = await http.post(Uri.parse("https://36bb-197-39-38-140.eu.ngrok.io/user/save"),
           body: {
             "email": enteredEmail.toString(),
             "image": result
@@ -75,6 +103,8 @@ class resultImage extends State<myResult>{
       print(result);
       print("%5%%%%%%%%");
       print("Email and result has successfully sent to database");
+      GetInfo(result);
+
 
     } catch(e){
       print("ERRRRRRRRRRRRRRRRRRRRRR");
@@ -87,31 +117,44 @@ class resultImage extends State<myResult>{
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xff35698A),
-        appBar: AppBar(
-          leading: InkWell(
-            onTap: () {
-              Navigator.pop(context, true);
-            },
-            child: Icon(
-              Icons.arrow_back_ios,
-              color: Colors.black54,
+        appBar: AppBar(leading: InkWell(
+          onTap: () {
+            Navigator.pop(context, true);
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black54,
+          ),
+        ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30),
+            ),),
+          backgroundColor: Color(0xffC1D6F1FF),
+          title: Text(
+            'Result' ,
+            style:TextStyle(
+                color: Color(0xff35698A)  , fontWeight:FontWeight.bold, fontSize: 25.0
             ),
           ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(30),
-              ),),
-            backgroundColor: Color(0xffC1D6F1FF),
           centerTitle: true,
-          toolbarHeight: 50,
-          title: const Text("Result",
-              style:TextStyle(
-              color: Color(0xff35698A)  , fontWeight:FontWeight.bold, fontSize: 25.0
-        ),
-          ),
-          automaticallyImplyLeading: false,
-          titleTextStyle: TextStyle(fontSize: 25),
-          foregroundColor: Colors.white,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.logout,
+                color: Colors.black54,
+              ),
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => Login(),
+                  ),
+                      (route) => false,
+                );
+              },
+            )
+          ],
         ),
         body: Container(
           color: HexColor("#35698A"),
@@ -189,11 +232,6 @@ class resultImage extends State<myResult>{
                         setState(() {
                           newForm();
                         });
-                        print(widget.email);
-                        print(diseaseResult);
-                        print("[[[[[[[[[[[[[");
-                        print(finalResult);
-                        print("[[[[[[[[[[[[[");
                       },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
@@ -227,7 +265,12 @@ class resultImage extends State<myResult>{
                             color: Colors.white,)
                           ,),
                       )*/
-                      ElevatedButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>protection()));},
+                      ElevatedButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>MyStatefulWidget(
+                          diseaseDescription: mappedRes["description"],diseaseProtection: mappedRes["protection"],
+                          diseaseTreatment: mappedRes["treatement"],diseaseSymptoms: mappedRes["symptoms"],
+                          diseaseLink1: mappedRes["link1"],diseaseLink2: mappedRes["link2"],
+                      )));},
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
                           shape: MaterialStateProperty.all<RoundedRectangleBorder>(

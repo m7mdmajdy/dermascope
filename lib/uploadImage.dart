@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:untitled/Login.dart';
+import 'package:untitled/main.dart';
 import 'package:untitled/result2.dart';
 import 'package:untitled/signup.dart';
 import 'package:image_picker/image_picker.dart';
@@ -45,7 +47,7 @@ class uploadImage extends State<myApp>{
 
   imageToApi() async{
     final request = http.MultipartRequest(
-        "POST", Uri.parse("https://6523-197-39-38-140.eu.ngrok.io/user/detect"));
+        "POST", Uri.parse("https://36bb-197-39-38-140.eu.ngrok.io/user/detect"));
     final headers ={"Content-type":"multipart/form-data"};
     request.files.add(http.MultipartFile('image',
         selectedImage!.readAsBytes().asStream(),selectedImage!.lengthSync(),
@@ -85,20 +87,36 @@ class uploadImage extends State<myApp>{
       child: Scaffold(
           backgroundColor: Color(0xff35698A),
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(30),
               ),),
             backgroundColor: Color(0xffC1D6F1FF),
-            leading: Icon(Icons.image,color: Colors.black54,),
-            toolbarHeight: 45,
-            title: const Text("Upload Image",
+            title: Text(
+              'Upload image' ,
               style:TextStyle(
-                  color: Color(0xff35698A)  , fontSize: 25.0
+                  color: Color(0xff35698A)  , fontWeight:FontWeight.bold, fontSize: 25.0
               ),
             ),
-            titleTextStyle: TextStyle(fontSize: 20),
-            foregroundColor: Colors.white,
+            centerTitle: true,
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.logout,
+                  color: Colors.black54,
+                ),
+                onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => Login(),
+                    ),
+                        (route) => false,
+                  );
+                },
+              )
+            ],
           ),
           body: Container(
             color: HexColor("#35698A"),

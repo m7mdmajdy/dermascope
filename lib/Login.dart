@@ -18,7 +18,7 @@ class _LoginState extends State<Login> {
 
   postData(var enteredEmail,var enteredPassword)async{
     try{
-      var response = await http.post(Uri.parse("https://6523-197-39-38-140.eu.ngrok.io/user/login"),
+      var response = await http.post(Uri.parse("https://36bb-197-39-38-140.eu.ngrok.io/user/login"),
         body: {
         "email": enteredEmail.toString(),
           "password":enteredPassword.toString()
