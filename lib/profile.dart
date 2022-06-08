@@ -73,7 +73,7 @@ class profileForm extends State<profile> {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                " *Name:",
+                " Name:",
                 style: TextStyle(
                     color: Color(0xffC1D6F1FF),
                     fontSize: 25,
@@ -118,7 +118,7 @@ class profileForm extends State<profile> {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                " *Email Address:",
+                " Email Address:",
                 style: TextStyle(
                     color: Color(0xffC1D6F1FF),
                     fontSize: 25,
@@ -163,7 +163,7 @@ class profileForm extends State<profile> {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                " *Last Diagnose:",
+                " Last Diagnose:",
                 style: TextStyle(
                     color: Color(0xffC1D6F1FF),
                     fontSize: 25,
@@ -193,7 +193,7 @@ class profileForm extends State<profile> {
                         width: 10.0,
                       ),
                       Text(
-                        widget.lastDiagnose.toString(),
+                        widget.lastDiagnose.toString().toUpperCase(),
                         style:
                             TextStyle(fontSize: 15, color: Color(0xff35698A)),
                       ),

@@ -47,7 +47,7 @@ class uploadImage extends State<myApp>{
 
   imageToApi() async{
     final request = http.MultipartRequest(
-        "POST", Uri.parse("https://bb1e-197-39-38-140.eu.ngrok.io/user/detect"));
+        "POST", Uri.parse("https://af8b-197-39-78-52.eu.ngrok.io/user/detect"));
     final headers ={"Content-type":"multipart/form-data"};
     request.files.add(http.MultipartFile('image',
         selectedImage!.readAsBytes().asStream(),selectedImage!.lengthSync(),

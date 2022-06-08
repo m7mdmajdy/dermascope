@@ -16,6 +16,7 @@ import 'package:untitled/Login.dart';
 import 'package:http/http.dart' as http;
 import 'package:untitled/protection.dart';
 import 'package:untitled/uploadImage.dart' as uu;
+import 'package:untitled/welcome.dart';
 class Login extends StatefulWidget {
 
   @override
@@ -30,7 +31,7 @@ class _LoginState extends State<Login> {
 
   postData(var enteredEmail,var enteredPassword)async{
     try{
-      var response = await http.post(Uri.parse("https://bb1e-197-39-38-140.eu.ngrok.io/user/login"),
+      var response = await http.post(Uri.parse("https://af8b-197-39-78-52.eu.ngrok.io/user/login"),
         body: {
         "email": enteredEmail.toString(),
           "password":enteredPassword.toString()
@@ -43,7 +44,7 @@ class _LoginState extends State<Login> {
       print(fe.runtimeType);
 
       if(response.statusCode==200){
-        Navigator.push(this.context, MaterialPageRoute(builder: (context)=>profile(email: mappedRes['email'],
+        Navigator.push(this.context, MaterialPageRoute(builder: (context)=>welcomeScreen(email: mappedRes['email'],
           name: mappedRes['name'], lastDiagnose: mappedRes['result'],)));
       }
       else{

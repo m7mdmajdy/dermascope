@@ -106,7 +106,7 @@ class Chat extends StatelessWidget {
                               color: Colors.white,
                               //const Color(0xff7c94b6),
                               image: DecorationImage(
-                                image: AssetImage("images/5.jpg"),
+                                image: AssetImage("images/d.png"),
                                 fit: BoxFit.cover,
                               ),
                               borderRadius: BorderRadius.all( Radius.circular(50.0)),
@@ -136,7 +136,7 @@ class Chat extends StatelessWidget {
                     "https://t.me/Onte0",
                     forceSafariVC: false),
                                 child: Text(
-                                  'Omar Anter' ,
+                                  'Doctor 1' ,
                                   style: TextStyle(
                                     fontSize: 20.0 ,
                                     fontWeight: FontWeight.bold ,
@@ -168,7 +168,7 @@ class Chat extends StatelessWidget {
                               color: Colors.white,
                               //const Color(0xff7c94b6),
                               image: DecorationImage(
-                                image: AssetImage("images/2.jpg"),
+                                image: AssetImage("images/d.png"),
                                 fit: BoxFit.cover,
                               ),
                               borderRadius: BorderRadius.all( Radius.circular(50.0)),
@@ -184,7 +184,7 @@ class Chat extends StatelessWidget {
                           Column(
                             children: [
                               Text(
-                                'Hamza Gamal' ,
+                                'Doctor 2' ,
                                 style: TextStyle(
                                   fontSize: 18.0 ,
                                   fontWeight: FontWeight.bold ,
@@ -215,7 +215,7 @@ class Chat extends StatelessWidget {
                               color: Colors.white,
                               //const Color(0xff7c94b6),
                               image: DecorationImage(
-                                image: AssetImage("images/7.jpg"),
+                                image: AssetImage("images/d.png"),
                                 fit: BoxFit.cover,
                               ),
                               borderRadius: BorderRadius.all( Radius.circular(50.0)),
@@ -231,7 +231,7 @@ class Chat extends StatelessWidget {
                           Column(
                             children: [
                               Text(
-                                'Omar Khaled' ,
+                                'Doctor 3' ,
                                 style: TextStyle(
                                   fontSize: 20.0 ,
                                   fontWeight: FontWeight.bold ,
@@ -262,7 +262,7 @@ class Chat extends StatelessWidget {
                               color: Colors.white,
                               //const Color(0xff7c94b6),
                               image: DecorationImage(
-                                image: AssetImage("images/4.jpg"),
+                                image: AssetImage("images/d.png"),
                                 fit: BoxFit.cover,
                               ),
                               borderRadius: BorderRadius.all( Radius.circular(50.0)),
@@ -282,7 +282,7 @@ class Chat extends StatelessWidget {
                                     "https://t.me/Maajdy",
                                     forceSafariVC: false),
                                 child: Text(
-                                  'Mohamed Magdy' ,
+                                  'Doctor 4' ,
                                   style: TextStyle(
                                     fontSize: 20.0 ,
                                     fontWeight: FontWeight.bold ,

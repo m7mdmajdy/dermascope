@@ -25,7 +25,7 @@ class _signUpState extends State<signUp> {
 
   sendInfo(var enteredName,var enteredEmail,var enteredPassword)async{
     try{
-      var response = await http.post(Uri.parse("https://bb1e-197-39-38-140.eu.ngrok.io/user/signup"),
+      var response = await http.post(Uri.parse("https://af8b-197-39-78-52.eu.ngrok.io/user/signup"),
           body: {
             "name": enteredName.toString(),
             "email":enteredEmail.toString(),
