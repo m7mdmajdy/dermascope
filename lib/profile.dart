@@ -1,18 +1,13 @@
-import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:untitled/Login.dart';
-import 'package:untitled/main.dart';
-import 'package:untitled/result2.dart';
 import 'package:untitled/patientchat.dart';
-import 'package:untitled/signup.dart';
 import 'package:untitled/uploadImage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter/services.dart';
-import 'package:http/http.dart' as http;
 
 class profile extends StatefulWidget {
   final String? email;
@@ -25,6 +20,32 @@ class profile extends StatefulWidget {
 }
 
 class profileForm extends State<profile> {
+
+  File? selectedImage;
+
+  Future pickImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery ,maxWidth: 480, maxHeight: 600);
+      if(image == null){return;}
+      final imageTemp = File(image.path);
+      setState(() => this.selectedImage = imageTemp);
+      Navigator.pop(context, true);
+
+    } on PlatformException catch(e) {
+      print('Failed to pick image: $e');
+    }
+  }
+  Future pickImageC() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.camera);
+      if(image == null) return;
+      final imageTemp = File(image.path);
+      setState(() => this.selectedImage = imageTemp);
+    } on PlatformException catch(e) {
+      print('Failed to pick image: $e');
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +89,7 @@ class profileForm extends State<profile> {
         body: Container(
           child: Column(children: [
             SizedBox(
-              height: 10,
+              height: 20,
             ),
             Align(
               alignment: Alignment.centerLeft,
@@ -158,7 +179,7 @@ class profileForm extends State<profile> {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 40,
             ),
             Align(
               alignment: Alignment.centerLeft,
@@ -233,4 +254,5 @@ class profileForm extends State<profile> {
   void navigateToSecondPage() {
     // Navigator.push(context, MaterialPageRoute(builder: (context)=>myResult(email: widget.email,res: diseaseResult,)));
   }
-}
+
+  }

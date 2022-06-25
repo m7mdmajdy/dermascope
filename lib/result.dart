@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
@@ -107,3 +108,5 @@ class Result extends StatelessWidget {
     );
   }
 }
+
+ */

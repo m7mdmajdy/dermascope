@@ -3,11 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:io';
-import 'package:flutter/services.dart';
 import 'package:untitled/Login.dart';
 import 'package:http/http.dart' as http;
 import 'package:untitled/protection.dart';
-import 'package:untitled/uploadImage.dart' as uu;
 
 class myResultPage extends StatelessWidget {
   @override
@@ -34,49 +32,34 @@ class myResult extends StatefulWidget {
 class resultImage extends State<myResult> {
   late var finalResult;
   var diseaseResult;
+  var diseasePercent;
   var diseaseRes;
   var mappedRes;
 
   Future GetInfo(var diseaseName) async {
     try {
       var response = await http.post(
-          Uri.parse("https://af8b-197-39-78-52.eu.ngrok.io/diseases"),
+          Uri.parse("https://e6d0-197-39-52-59.eu.ngrok.io/diseases"),
           body: {
             "disease": diseaseName.toString(),
           });
       diseaseRes = response.body;
-
-      print("888888888888888888888888");
-      //print(diseaseName);
-      print(diseaseRes.runtimeType);
-      print(diseaseRes);
       mappedRes = jsonDecode(diseaseRes);
-      print(mappedRes.runtimeType);
-      print(mappedRes["protection"]);
       sleep(const Duration(seconds: 2));
     } catch (e) {
-      print("ERRRRRRRRRRRRRRRRRRRRRR");
       print(e);
     }
   }
 
   Future getResult() async {
     var response = await http
-        .get(Uri.parse("https://af8b-197-39-78-52.eu.ngrok.io/user/detect"));
-    print("OOOOOOOOOOOOOOOOOO");
+        .get(Uri.parse("https://e6d0-197-39-52-59.eu.ngrok.io/user/detect"));
 
     if (response.statusCode == 200) {
-      print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-      print(response.runtimeType);
       var jsonResponse = jsonDecode(response.body);
-      print("@@@@@@@@@@@@@@@@");
       diseaseResult = jsonResponse['resssss'];
-      print('Number of books about http: $diseaseResult.');
-      print("================");
-      print(diseaseResult);
-      print("==============");
+      diseasePercent = jsonResponse['percent'];
       finalResult = diseaseResult;
-      print(finalResult);
     } else {
       print('Request failed with status: ${response.statusCode}.');
     }
@@ -86,20 +69,12 @@ class resultImage extends State<myResult> {
   }
 
   sendResult(var enteredEmail, var result) async {
-    print("ZZZZZZZZZZZZ");
-    print(result);
     try {
       var response = await http.post(
-          Uri.parse("https://af8b-197-39-78-52.eu.ngrok.io/user/save"),
+          Uri.parse("https://e6d0-197-39-52-59.eu.ngrok.io/user/save"),
           body: {"email": enteredEmail.toString(), "image": result});
-      print(response.body);
-      print("sdsaasdasdasdasd");
-      print(result);
-      print("%5%%%%%%%%");
-      print("Email and result has successfully sent to database");
       GetInfo(result);
     } catch (e) {
-      print("ERRRRRRRRRRRRRRRRRRRRRR");
       print(e);
     }
   }
@@ -159,44 +134,23 @@ class resultImage extends State<myResult> {
                   padding: const EdgeInsets.all(16.0),
                   child: diseaseResult != null
                       ? Column(children: [
-                          SizedBox(height: 150,),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "The probable disease is:",
-                        style: TextStyle(
-                            color: Color(0xffC1D6F1FF),
-                            fontSize: 25,
-                            fontWeight: FontWeight.w900,
-                            height: 2.5),
-                      ),
-                    ),
-                    SizedBox(height: 20,),
-                    /*
-                    Text(
-                      "The detected disease is:",
-                      style: TextStyle(
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.lightBlue),
-                    ),
-                    SizedBox(height: 10,),
-                    Text(
-                    diseaseResult,
-                    style: TextStyle(
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.yellow),
-                  ),
-                    SizedBox(height: 100,),
-                    Text(
-                      "Click on the button below to know more about the disease",
-                      style: TextStyle(
-                          fontSize: 17.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white70),
-                    ),
-*/
+                          SizedBox(
+                            height: 150,
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              "The probable disease is:",
+                              style: TextStyle(
+                                  color: Color(0xffC1D6F1FF),
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w900,
+                                  height: 2.5),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Container(
@@ -208,38 +162,37 @@ class resultImage extends State<myResult> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   children: [
-                                    /* Icon(
-                          Icons.info,
-                          color: Color(0xff35698A),
-                        ),*/
                                     SizedBox(
                                       width: 10.0,
                                     ),
                                     Text(
-                                      diseaseResult.toUpperCase(),
+                                      diseaseResult.toUpperCase() +
+                                          "\nThe approximated accuracy: " +
+                                          diseasePercent,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontSize: 20,
                                           color: Color(0xff35698A)),
                                     ),
-
                                   ],
                                 ),
                               ),
                             ),
                           ),
-                    SizedBox(height: 20,),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "To know more about the disease, click on the button below",
-                        style: TextStyle(
-                            color: Color(0xffC1D6F1FF),
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              "To know more about the disease, click on the button below",
+                              style: TextStyle(
+                                color: Color(0xffC1D6F1FF),
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                      ),
-                    ),
+                          ),
                         ])
                       : Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -305,21 +258,7 @@ class resultImage extends State<myResult> {
                             height: 0,
                           ),
                     diseaseResult != null
-                        ? /*RaisedButton(
-                        onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>protection()));
-                        },
-                        color: Colors.blue,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Text(
-
-                          "More information",
-                          style: TextStyle(
-                            color: Colors.white,)
-                          ,),
-                      )*/
-                        ElevatedButton(
+                        ? ElevatedButton(
                             onPressed: () {
                               Navigator.push(
                                   context,

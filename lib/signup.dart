@@ -1,5 +1,3 @@
-/*done*/
-import 'dart:developer';
 import 'dart:ui';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
@@ -23,13 +21,16 @@ class _signUpState extends State<signUp> {
 
   var dateController = TextEditingController();
 
-  sendInfo(var enteredName,var enteredEmail,var enteredPassword)async{
+  sendInfo(var enteredName,var enteredEmail,var enteredPassword, var enteredPhone, var enteredBdate)async{
     try{
-      var response = await http.post(Uri.parse("https://af8b-197-39-78-52.eu.ngrok.io/user/signup"),
+      var response = await http.post(Uri.parse("https://e6d0-197-39-52-59.eu.ngrok.io/user/signup"),
           body: {
             "name": enteredName.toString(),
             "email":enteredEmail.toString(),
-            "password":enteredPassword.toString()
+            "password":enteredPassword.toString(),
+            "phone":enteredPhone.toString(),
+            "bdate":enteredBdate.toString(),
+
           }
       );
 
@@ -72,17 +73,6 @@ class _signUpState extends State<signUp> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          /* appBar: AppBar(
-            leading: Icon(Icons.account_circle_rounded),
-            toolbarHeight: 45,
-            backgroundColor: HexColor("#4c8cb5"),
-            title: Text("Create an account",textDirection:TextDirection.ltr),
-            titleTextStyle: TextStyle(fontSize: 20),
-            foregroundColor: Colors.white,
-            actions: <Widget>[
-              // overflow menu
-            ],
-          ),*/
           body:Container(
             child: Stack(
               children: [
@@ -114,6 +104,7 @@ class _signUpState extends State<signUp> {
                             TextFormField(
                               controller: nameController,
                               keyboardType: TextInputType.name,
+                              style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                 labelText: 'Name',
                                 labelStyle: TextStyle(color: Colors.white),
@@ -141,6 +132,7 @@ class _signUpState extends State<signUp> {
                             TextFormField(
                               controller: emailController,
                               keyboardType: TextInputType.emailAddress,
+                              style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                 labelText: 'Email Address',
                                 labelStyle: TextStyle(color: Colors.white),
@@ -171,6 +163,7 @@ class _signUpState extends State<signUp> {
                               controller: passwordController,
                               keyboardType: TextInputType.visiblePassword,
                               obscureText: true,
+                              style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                 labelText: 'Password',
                                 labelStyle: TextStyle(color: Colors.white),
@@ -202,6 +195,7 @@ class _signUpState extends State<signUp> {
                             TextFormField(
                               controller: phoneController,
                               keyboardType: TextInputType.phone,
+                              style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                 labelText: 'Phone Number',
                                 labelStyle: TextStyle(color: Colors.white),
@@ -229,6 +223,7 @@ class _signUpState extends State<signUp> {
                             ),
 
                             TextField(
+                              style: TextStyle(color: Colors.white),
                               showCursor: true,
                               readOnly: true,
                               onTap: () {
@@ -283,7 +278,7 @@ class _signUpState extends State<signUp> {
                                 }
                                 else
                                 {
-                                  sendInfo(nameController.text, emailController.text, passwordController.text);
+                                  sendInfo(nameController.text, emailController.text, passwordController.text,phoneController.text,_dateOfBirthController.text);
 
                                 }
 
