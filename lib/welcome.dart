@@ -48,9 +48,9 @@ class _welcomeScreenState extends State<welcomeScreen> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      " What is Dermascope?",
+                      "  What is Dermascope?",
                       style: TextStyle(
-                          color: Color.fromARGB(255, 7, 42, 200),
+                          color: Color(0xff646FD4),
                           fontSize: 25,
                           fontWeight: FontWeight.w900,
                           height: 2.5),
@@ -105,7 +105,7 @@ class _welcomeScreenState extends State<welcomeScreen> {
                     },
                     label: const Text('Click here to start'),
                     icon: const Icon(Icons.arrow_circle_up_sharp),
-                    backgroundColor: Color.fromARGB(255, 7, 42, 200),
+                    backgroundColor: Color(0xff646FD4),
                     foregroundColor: Colors.white,
                     splashColor: Colors.white,
 

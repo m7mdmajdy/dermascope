@@ -39,7 +39,7 @@ class resultImage extends State<myResult> {
   Future GetInfo(var diseaseName) async {
     try {
       var response = await http.post(
-          Uri.parse("https://e6d0-197-39-52-59.eu.ngrok.io/diseases"),
+          Uri.parse("https://813d-196-153-127-101.eu.ngrok.io/diseases"),
           body: {
             "disease": diseaseName.toString(),
           });
@@ -53,7 +53,7 @@ class resultImage extends State<myResult> {
 
   Future getResult() async {
     var response = await http
-        .get(Uri.parse("https://e6d0-197-39-52-59.eu.ngrok.io/user/detect"));
+        .get(Uri.parse("https://813d-196-153-127-101.eu.ngrok.io/user/detect"));
 
     if (response.statusCode == 200) {
       var jsonResponse = jsonDecode(response.body);
@@ -71,7 +71,7 @@ class resultImage extends State<myResult> {
   sendResult(var enteredEmail, var result) async {
     try {
       var response = await http.post(
-          Uri.parse("https://e6d0-197-39-52-59.eu.ngrok.io/user/save"),
+          Uri.parse("https://813d-196-153-127-101.eu.ngrok.io/user/save"),
           body: {"email": enteredEmail.toString(), "image": result});
       GetInfo(result);
     } catch (e) {
@@ -83,7 +83,7 @@ class resultImage extends State<myResult> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xff35698A),
+        backgroundColor: Colors.white,
         appBar: AppBar(
           leading: InkWell(
             onTap: () {
@@ -91,7 +91,7 @@ class resultImage extends State<myResult> {
             },
             child: Icon(
               Icons.arrow_back_ios,
-              color: Colors.black54,
+              color: Colors.white,
             ),
           ),
           shape: RoundedRectangleBorder(
@@ -99,11 +99,11 @@ class resultImage extends State<myResult> {
               bottom: Radius.circular(30),
             ),
           ),
-          backgroundColor: Color(0xffC1D6F1FF),
+          backgroundColor: Color(0xff646FD4),
           title: Text(
             'Result',
             style: TextStyle(
-                color: Color(0xff35698A),
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 25.0),
           ),
@@ -112,7 +112,7 @@ class resultImage extends State<myResult> {
             IconButton(
               icon: Icon(
                 Icons.logout,
-                color: Colors.black54,
+                color: Colors.white,
               ),
               onPressed: () {
                 Navigator.pushAndRemoveUntil(
@@ -126,183 +126,217 @@ class resultImage extends State<myResult> {
             )
           ],
         ),
+        //318FB5
         body: Container(
-          color: HexColor("#35698A"),
-          child: Column(
-            children: [
-              Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: diseaseResult != null
-                      ? Column(children: [
-                          SizedBox(
-                            height: 150,
-                          ),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "The probable disease is:",
-                              style: TextStyle(
-                                  color: Color(0xffC1D6F1FF),
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w900,
-                                  height: 2.5),
+          alignment: Alignment.topLeft,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              colorFilter: new ColorFilter.mode(
+                  Colors.black.withOpacity(0.2), BlendMode.dstIn),
+              image: AssetImage("images/dood.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Container(
+            //color: Colors.white,
+            child: Column(
+              children: [
+                Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: diseaseResult != null
+                        ? Column(children: [
+                            SizedBox(
+                              height: 40,
                             ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10.0),
-                                color: Colors.white,
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "The probable disease is:",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w900,
+                                    height: 2.5),
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 10.0,
-                                    ),
-                                    Text(
-                                      diseaseResult.toUpperCase() +
-                                          "\nThe approximated accuracy: " +
-                                          diseasePercent,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 20,
-                                          color: Color(0xff35698A)),
-                                    ),
-                                  ],
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  color: Colors.white,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 5.0,
+                                      ),
+                                      Text(
+                                        diseaseResult.toUpperCase(),
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w800,
+                                            fontSize: 20,
+                                            color: Colors.black),
+                                      ),
+
+
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "To know more about the disease, click on the button below",
-                              style: TextStyle(
-                                color: Color(0xffC1D6F1FF),
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                              ),
+                      Row(
+                        children: [Text(
+                              "\nThe approximated accuracy: \n",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20,
+                              color: Colors.black),
+                        ),
+                        ]
+                      ),
+                      Text(
+                            diseasePercent+"%",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 70,
+                            color: Colors.black),
+                      ),
+                            SizedBox(
+                              height: 50,
                             ),
-                          ),
-                        ])
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(height: 200),
-                            Text(
-                              "Thank you for using Dermascope!",
-                              style: TextStyle(
-                                  fontSize: 22.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white60),
-                            ),
-                            SizedBox(height: 70),
-                            Row(children: [
-                              Icon(
-                                Icons.check_circle,
-                                size: 35,
-                                color: Colors.white.withOpacity(0.3),
-                              ),
-                              Text(
-                                "The result is ready for you!",
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "To know more about the disease, click on the button below",
                                 style: TextStyle(
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white60),
-                              ),
-                            ])
-                          ],
-                        )),
-              Padding(
-                padding: const EdgeInsets.all(100.0),
-                child: Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Column(children: [
-                    diseaseResult == null
-                        ? ElevatedButton(
-                            onPressed: () async {
-                              getResult();
-                              setState(() {
-                                newForm();
-                              });
-                            },
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  HexColor("#4c8cb5")),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(100.0),
-                                    side:
-                                        BorderSide(color: HexColor("#4c8cb5"))),
+                                  color: HexColor("646FD4"),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
-                            child: Text(
-                              "Click here to show result",
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                          )
-                        : SizedBox(
-                            height: 0,
-                          ),
-                    diseaseResult != null
-                        ? ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MyStatefulWidget(
-                                            diseaseDescription:
-                                                mappedRes["description"],
-                                            diseaseProtection:
-                                                mappedRes["protection"],
-                                            diseaseTreatment:
-                                                mappedRes["treatement"],
-                                            diseaseSymptoms:
-                                                mappedRes["symptoms"],
-                                            diseaseLink1: mappedRes["link1"],
-                                            diseaseLink2: mappedRes["link2"],
-                                          )));
-                            },
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  HexColor("#4c8cb5")),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(100.0),
-                                    side:
-                                        BorderSide(color: HexColor("#4c8cb5"))),
-                              ),
-                            ),
-                            child: Row(children: [
-                              Icon(Icons.info_outline),
-                              SizedBox(
-                                width: 5,
-                              ),
+                          ])
+                        : Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(height: 200),
                               Text(
-                                "More information",
-                                style: TextStyle(fontSize: 16),
-                              )
-                            ]),
-                          )
-                        : Text("")
-                  ]),
+                                "Thank you for using Dermascope!",
+                                style: TextStyle(
+                                    fontSize: 22.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black87),
+                              ),
+                              SizedBox(height: 60),
+                              Row(children: [
+                                Icon(
+                                  Icons.check_circle,
+                                  size: 35,
+                                  color: Colors.black87,
+                                ),
+                                Text(
+                                  "The result is ready for you!",
+                                  style: TextStyle(
+                                      fontSize: 25.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black87),
+                                ),
+                              ])
+                            ],
+                          )),
+                Padding(
+                  padding: const EdgeInsets.all(90.0),
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Column(children: [
+                      diseaseResult == null
+                          ? ElevatedButton(
+                              onPressed: () async {
+                                getResult();
+                                setState(() {
+                                  newForm();
+                                });
+                              },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Color(0xff646FD4)),
+                      shape:
+                      MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(100.0),
+                            side: BorderSide(color: HexColor("#4c8cb5"))),
+                      ),
+                    ),
+
+                              child: Row(
+                                children: [Icon(Icons.done),
+                                  Text(
+                                  "Click here to show result",
+                                ),
+
+                                ]
+                              ),
+                            )
+                          : SizedBox(
+                              height: 0,
+                            ),
+                      diseaseResult != null
+                          ? ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => MyStatefulWidget(
+                                              diseaseDescription:
+                                                  mappedRes["description"],
+                                              diseaseProtection:
+                                                  mappedRes["protection"],
+                                              diseaseTreatment:
+                                                  mappedRes["treatement"],
+                                              diseaseSymptoms:
+                                                  mappedRes["symptoms"],
+                                              diseaseLink1: mappedRes["link1"],
+                                              diseaseLink2: mappedRes["link2"],
+                                            )));
+                              },
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all<Color>(
+                                    HexColor("646FD4")),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30.0),
+                                      side:
+                                          BorderSide(color: HexColor("#4c8cb5"))),
+                                ),
+                              ),
+                              child: Row(children: [
+                                Icon(Icons.info_outline),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "More information",
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              ]),
+                            )
+                          : Text("")
+                    ]),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

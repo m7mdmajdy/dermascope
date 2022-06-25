@@ -21,7 +21,7 @@ class _LoginState extends State<Login> {
   postData(var enteredEmail, var enteredPassword) async {
     try {
       var response = await http.post(
-          Uri.parse("https://e6d0-197-39-52-59.eu.ngrok.io/user/login"),
+          Uri.parse("https://813d-196-153-127-101.eu.ngrok.io/user/login"),
           body: {
             "email": enteredEmail.toString(),
             "password": enteredPassword.toString()
@@ -60,7 +60,7 @@ class _LoginState extends State<Login> {
                 child: ClipPath(
                   clipper: WaveClipper(),
                   child: Container(
-                    color: HexColor("#35698A").withOpacity(0.6),
+                    color: HexColor("#8CC0DE").withOpacity(0.6),
                     height: 580,
                   ),
                 ),
@@ -68,7 +68,7 @@ class _LoginState extends State<Login> {
               ClipPath(
                 clipper: WaveClipper(),
                 child: Container(
-                  color: HexColor("#35698A"),
+                  color: Color(0xff646FD4),
                   height: 560,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -88,7 +88,7 @@ class _LoginState extends State<Login> {
                           decoration: InputDecoration(
                             labelText: 'Email Address',
                             labelStyle: TextStyle(color: Colors.white),
-                            fillColor: HexColor("#35698A").withOpacity(0.1),
+                            fillColor: HexColor("#8CC0DE").withOpacity(0.1),
                             filled: true,
                             border: OutlineInputBorder(),
                             prefixIcon: Icon(
@@ -118,7 +118,7 @@ class _LoginState extends State<Login> {
                           decoration: InputDecoration(
                             labelText: 'Password',
                             labelStyle: TextStyle(color: Colors.white),
-                            fillColor: HexColor("#35698A").withOpacity(0.1),
+                            fillColor: HexColor("#8CC0DE").withOpacity(0.1),
                             filled: true,
                             border: OutlineInputBorder(),
                             prefixIcon: Icon(
@@ -151,13 +151,13 @@ class _LoginState extends State<Login> {
                               child: ElevatedButton(
                                 style: ButtonStyle(
                                     backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            HexColor("#4c8cb5")),
+                                    MaterialStateProperty.all<Color>(
+                                        HexColor("#FFF3E6")),
                                     shape: MaterialStateProperty.all<
-                                            RoundedRectangleBorder>(
+                                        RoundedRectangleBorder>(
                                         RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(100.0),
+                                            BorderRadius.circular(100.0),
                                             side: BorderSide(
                                                 color: HexColor("#4c8cb5"))))),
                                 onPressed: () {
@@ -182,7 +182,7 @@ class _LoginState extends State<Login> {
                                 child: Text(
                                   'Login',
                                   style: TextStyle(
-                                      color: Colors.white,
+                                        color: Colors.black,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
@@ -205,7 +205,7 @@ class _LoginState extends State<Login> {
                                               builder: (context) => signUp()));
                                     },
                                     child: Text(
-                                      "Create one",
+                                      " Sign up",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.white),

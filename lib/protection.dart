@@ -63,7 +63,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       Text(
                         widget.diseaseDescription.toString(),
                         style: TextStyle(
-                          color: Color(0xff35698A),
+                          color: Colors.black87,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
@@ -103,7 +103,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         widget.diseaseProtection.toString(),
                         textAlign: TextAlign.left,
                         style: TextStyle(
-                          color: Color(0xff35698A),
+                          color: Colors.black87,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
@@ -163,7 +163,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     widget.diseaseTreatment.toString(),
                     style: TextStyle(
                       fontSize: 18.0,
-                      color: Color(0xff35698A),
+                      color: Colors.black87,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -198,7 +198,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       Text(
                         "- If you have any of the following symptoms , you should contact a dermatology:-",
                         style: TextStyle(
-                            color: Color(0xff35698A),
+                            color: Colors.black87,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             height: 1.5),
@@ -206,7 +206,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       Text(
                         widget.diseaseSymptoms.toString(),
                         style: TextStyle(
-                            color: Color(0xff35698A),
+                            color: Colors.black87,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             height: 2.5),
@@ -217,7 +217,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
-                              HexColor("#4c8cb5")),
+                              Color(0xff646FD4)),
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
@@ -283,7 +283,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             },
             child: Icon(
               Icons.arrow_back_ios,
-              color: Colors.black54,
+              color: Colors.white,
             ),
           ),
           shape: RoundedRectangleBorder(
@@ -291,11 +291,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               bottom: Radius.circular(30),
             ),
           ),
-          backgroundColor: Colors.white,
+          backgroundColor: Color(0xff646FD4),
           title: Text(
             _title,
             style: TextStyle(
-                color: Color(0xff35698A),
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 25.0),
           ),
@@ -304,7 +304,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             IconButton(
               icon: Icon(
                 Icons.logout,
-                color: Colors.black54,
+                color: Colors.white,
               ),
               onPressed: () {
                 Navigator.pushAndRemoveUntil(
@@ -326,22 +326,22 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             BottomNavigationBarItem(
               icon: Icon(Icons.details),
               label: 'Description',
-              backgroundColor: Color(0xff35698A),
+              backgroundColor: Color(0xff646FD4),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.health_and_safety),
               label: 'Protection',
-              backgroundColor: Color(0xff35698A),
+              backgroundColor: Color(0xff646FD4),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.medical_services),
               label: 'Treatment',
-              backgroundColor: Color(0xff35698A),
+              backgroundColor: Color(0xff646FD4),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.account_box),
               label: 'Consult a doctor',
-              backgroundColor: Color(0xff35698A),
+              backgroundColor: Color(0xff646FD4),
             ),
           ],
           currentIndex: _selectedIndex,

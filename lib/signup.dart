@@ -23,17 +23,15 @@ class _signUpState extends State<signUp> {
 
   sendInfo(var enteredName,var enteredEmail,var enteredPassword, var enteredPhone, var enteredBdate)async{
     try{
-      var response = await http.post(Uri.parse("https://e6d0-197-39-52-59.eu.ngrok.io/user/signup"),
+      var response = await http.post(Uri.parse("https://813d-196-153-127-101.eu.ngrok.io/user/signup"),
           body: {
             "name": enteredName.toString(),
             "email":enteredEmail.toString(),
             "password":enteredPassword.toString(),
             "phone":enteredPhone.toString(),
             "bdate":enteredBdate.toString(),
-
           }
       );
-
       if(response.statusCode==200){
         signedUpSuccessfully(context);
       }
@@ -53,7 +51,7 @@ class _signUpState extends State<signUp> {
     return InputDecoration(
       labelText: 'Date of birth',
       labelStyle: TextStyle(color: Colors.white),
-      fillColor: HexColor("#35698A").withOpacity(0.4), filled: true,
+      fillColor: HexColor("#8CC0DE").withOpacity(0.1), filled: true,
       border: OutlineInputBorder(),
       prefixIcon: Icon(
         Icons.date_range,
@@ -80,7 +78,7 @@ class _signUpState extends State<signUp> {
                   child: ClipPath(
                     clipper: WaveClipper(),
                     child: Container(
-                      color: HexColor("#35698A").withOpacity(0.6),
+                      color: HexColor("#8CC0DE").withOpacity(0.6),
                       height: 660,
                     ),
                   ),
@@ -88,7 +86,7 @@ class _signUpState extends State<signUp> {
                 ClipPath(
                   clipper: WaveClipper(),
                   child: Container(
-                    color: HexColor("#35698A"),
+                    color: Color(0xff646FD4),
                     height: 640,
                     child:Padding(
                       padding: const EdgeInsets.all(16.0),
@@ -108,7 +106,7 @@ class _signUpState extends State<signUp> {
                               decoration: InputDecoration(
                                 labelText: 'Name',
                                 labelStyle: TextStyle(color: Colors.white),
-                                fillColor:  HexColor("#35698A").withOpacity(0.1), filled: true,
+                                fillColor:  HexColor("#8CC0DE").withOpacity(0.1), filled: true,
                                 border: OutlineInputBorder(),
                                 prefixIcon: Icon(
                                   Icons.account_circle_outlined,
@@ -136,7 +134,7 @@ class _signUpState extends State<signUp> {
                               decoration: InputDecoration(
                                 labelText: 'Email Address',
                                 labelStyle: TextStyle(color: Colors.white),
-                                fillColor: HexColor("#35698A").withOpacity(0.1), filled: true,
+                                fillColor: HexColor("#8CC0DE").withOpacity(0.1), filled: true,
                                 border: OutlineInputBorder(),
                                 prefixIcon: Icon(
                                   Icons.email,
@@ -167,7 +165,7 @@ class _signUpState extends State<signUp> {
                               decoration: InputDecoration(
                                 labelText: 'Password',
                                 labelStyle: TextStyle(color: Colors.white),
-                                fillColor:  HexColor("#35698A").withOpacity(0.1), filled: true,
+                                fillColor:  HexColor("#8CC0DE").withOpacity(0.1), filled: true,
                                 border: OutlineInputBorder(),
                                 prefixIcon: Icon(
                                   Icons.lock,
@@ -199,7 +197,7 @@ class _signUpState extends State<signUp> {
                               decoration: InputDecoration(
                                 labelText: 'Phone Number',
                                 labelStyle: TextStyle(color: Colors.white),
-                                fillColor:  HexColor("#35698A").withOpacity(0.1),filled: true,
+                                fillColor:  HexColor("#8CC0DE").withOpacity(0.1),filled: true,
                                 border: OutlineInputBorder(),
                                 prefixIcon: Icon(
                                   Icons.phone,
@@ -252,15 +250,17 @@ class _signUpState extends State<signUp> {
 
 
                             ElevatedButton(
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
-                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                        RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(100.0),
-                                            side: BorderSide(color: HexColor("#4c8cb5"))
-                                        )
-                                    )
-                                ),
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                  MaterialStateProperty.all<Color>(
+                                      HexColor("#FFF3E6")),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(100.0),
+                                          side: BorderSide(
+                                              color: HexColor("#4c8cb5"))))),
 
                               onPressed: ()
                               {
@@ -288,7 +288,7 @@ class _signUpState extends State<signUp> {
                                 padding: const EdgeInsets.all(13.0),
                                 child: Text(
                                   'Sign Up',
-                                  style: TextStyle(color: Colors.white,
+                                  style: TextStyle(color: Colors.black,
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.bold),
                                 ),

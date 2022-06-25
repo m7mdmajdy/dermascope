@@ -41,7 +41,7 @@ class uploadImage extends State<myApp> {
 
   imageToApi() async {
     final request = http.MultipartRequest(
-        "POST", Uri.parse("https://e6d0-197-39-52-59.eu.ngrok.io/user/detect"));
+        "POST", Uri.parse("https://813d-196-153-127-101.eu.ngrok.io/user/detect"));
     final headers = {"Content-type": "multipart/form-data"};
     request.files.add(http.MultipartFile('image',
         selectedImage!.readAsBytes().asStream(), selectedImage!.lengthSync(),
@@ -83,19 +83,27 @@ class uploadImage extends State<myApp> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Color(0xff35698A),
+          backgroundColor: Colors.white,
           appBar: AppBar(
-            automaticallyImplyLeading: false,
+            leading: InkWell(
+              onTap: () {
+                Navigator.pop(context, true);
+              },
+              child: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+              ),
+            ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(30),
               ),
             ),
-            backgroundColor: Color(0xffC1D6F1FF),
+            backgroundColor: Color(0xff646FD4),
             title: Text(
               'Upload image',
               style: TextStyle(
-                  color: Color(0xff35698A),
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 25.0),
             ),
@@ -104,7 +112,7 @@ class uploadImage extends State<myApp> {
               IconButton(
                 icon: Icon(
                   Icons.logout,
-                  color: Colors.black54,
+                  color: Colors.white,
                 ),
                 onPressed: () {
                   Navigator.pushAndRemoveUntil(
@@ -119,117 +127,125 @@ class uploadImage extends State<myApp> {
             ],
           ),
           body: Container(
-            color: HexColor("#35698A"),
-            child: Center(
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    selectedImage != null
-                        ? Image.file(
-                            selectedImage!,
-                            width: 400,
-                            height: 400,
-                          )
-                        : Icon(
-                            Icons.image,
-                            size: 250,
-                            color: Colors.white.withOpacity(0.3),
+            color: Colors.white,
+            child: Container(
+              alignment: Alignment.topLeft,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  colorFilter: new ColorFilter.mode(
+                      Colors.black.withOpacity(0.2), BlendMode.dstIn),
+                  image: AssetImage("images/dood.png"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Center(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      selectedImage != null
+                          ? Image.file(
+                              selectedImage!,
+                              width: 400,
+                              height: 400,
+                            )
+                          : Icon(
+                              Icons.image,
+                              size: 250,
+                              color: Color(0xff646FD4).withOpacity(0.8),
+                            ),
+                      SizedBox(height: 10, width: 10),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
+                            child: ElevatedButton(
+                                onPressed: pickImageC,
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Color(0xff646FD4)),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(100.0),
+                                        side: BorderSide(
+                                            color: HexColor("#4c8cb5"))),
+                                  ),
+                                ),
+                                child: Row(children: [
+                                  Icon(Icons.camera_alt),
+                                  SizedBox(
+                                    width: 4,
+                                  ),
+                                  Text("Open camera"),
+                                ])),
                           ),
-                    SizedBox(height: 10, width: 10),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20.0),
-                          child: ElevatedButton(
-                              onPressed: pickImageC,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 30.0),
+                            child: ElevatedButton(
+                              onPressed: pickImage,
                               style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        HexColor("#4c8cb5")),
+                                backgroundColor: MaterialStateProperty.all<Color>(
+                                    Color(0xff646FD4)),
                                 shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(100.0),
-                                      side: BorderSide(
-                                          color: HexColor("#4c8cb5"))),
+                                      borderRadius: BorderRadius.circular(100.0),
+                                      side:
+                                          BorderSide(color: HexColor("#4c8cb5"))),
                                 ),
                               ),
                               child: Row(children: [
-                                Icon(Icons.camera_alt),
+                                Icon(Icons.image_outlined),
                                 SizedBox(
                                   width: 4,
                                 ),
-                                Text("Open camera"),
-                              ])),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30.0),
-                          child: ElevatedButton(
-                            onPressed: pickImage,
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  HexColor("#4c8cb5")),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(100.0),
-                                    side:
-                                        BorderSide(color: HexColor("#4c8cb5"))),
-                              ),
+                                Text("Choose from gallery")
+                              ]),
                             ),
-                            child: Row(children: [
-                              Icon(Icons.image_outlined),
-                              SizedBox(
-                                width: 4,
-                              ),
-                              Text("Choose from gallery")
-                            ]),
                           ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 30,
-                      height: 30,
-                    ),
-                    selectedImage != null
-                        ? SizedBox(
-                            width: 300,
-                            height: 40,
-                            child: ElevatedButton(
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        HexColor("#4c8cb5")),
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(100.0),
-                                      side: BorderSide(
-                                          color: HexColor("#4c8cb5"))),
+                          SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 30,
+                        height: 30,
+                      ),
+                      selectedImage != null
+                          ? SizedBox(
+                              width: 300,
+                              height: 40,
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                      Color(0xff646FD4)),
+                                  shape:
+                                  MaterialStateProperty.all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(100.0),
+                                        side: BorderSide(color: HexColor("#4c8cb5"))),
+                                  ),
                                 ),
+                                child: Text("Start Detection"),
+                                onPressed: () {
+                                  imageToApi();
+                                  print("ASDasdasd");
+                                  print(diseaseResult);
+                                  print(widget.email);
+                                  navigateToSecondPage();
+                                },
                               ),
-                              child: Text("Start Detection"),
-                              onPressed: () {
-                                imageToApi();
-                                print("ASDasdasd");
-                                print(diseaseResult);
-                                print(widget.email);
-                                navigateToSecondPage();
-                              },
+                            )
+                          : SizedBox(
+                              width: 10,
+                              height: 10,
                             ),
-                          )
-                        : SizedBox(
-                            width: 10,
-                            height: 10,
-                          ),
-                  ]),
+                    ]),
+              ),
             ),
           )),
     );

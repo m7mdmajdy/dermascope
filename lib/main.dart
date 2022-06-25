@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:untitled/Login.dart';
+import 'package:untitled/signup.dart';
+import 'package:untitled/uploadImage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
 
       ),
-      home:SafeArea(child: MyHomePage()),
+      home:SafeArea(child: Login()),
     );
   }
 }
@@ -53,7 +55,7 @@ class _State extends State<MyHomePage> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color.fromRGBO(66, 107, 127, 1),
+                  Color.fromRGBO(66, 107, 255, 1),
                   Color.fromRGBO(164, 183, 193, 1)
                 ],
               )
