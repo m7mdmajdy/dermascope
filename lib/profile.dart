@@ -21,31 +21,19 @@ class profile extends StatefulWidget {
 
 class profileForm extends State<profile> {
 
-  File? selectedImage;
+String name(String x){
+    var n=x[0];
 
-  Future pickImage() async {
-    try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery ,maxWidth: 480, maxHeight: 600);
-      if(image == null){return;}
-      final imageTemp = File(image.path);
-      setState(() => this.selectedImage = imageTemp);
-      Navigator.pop(context, true);
-
-    } on PlatformException catch(e) {
-      print('Failed to pick image: $e');
+    for (var i =0;i<x.length;i++){
+      if (x[i]!=" ")
+        {continue;}
+      else{
+        n=n+x[i+1];
+      }
     }
-  }
-  Future pickImageC() async {
-    try {
-      final image = await ImagePicker().pickImage(source: ImageSource.camera);
-      if(image == null) return;
-      final imageTemp = File(image.path);
-      setState(() => this.selectedImage = imageTemp);
-    } on PlatformException catch(e) {
-      print('Failed to pick image: $e');
-    }
-  }
 
+    return n;
+}
 
   @override
   Widget build(BuildContext context) {
@@ -106,8 +94,21 @@ class profileForm extends State<profile> {
           ),
           child: Container(
             child: Column(children: [
+              SizedBox(height: 30,),
+              Container(
+                width: 70,
+                height: 70,
+                child: Center(
+                  child: Text(name(widget.name.toString().toUpperCase()),
+                  style: TextStyle(fontSize: 25,color: Colors.white),
+                  ),
+                ),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Color(0xff646FD4)),
+              ),
               SizedBox(
-                height: 20,
+                height: 10,
               ),
               Align(
                 alignment: Alignment.centerLeft,

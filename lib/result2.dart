@@ -30,16 +30,22 @@ class myResult extends StatefulWidget {
 }
 
 class resultImage extends State<myResult> {
+  
   late var finalResult;
   var diseaseResult;
   var diseasePercent;
   var diseaseRes;
   var mappedRes;
+  bool pressed=false;
+/*
+  Widget loading(){
+    return diseaseResult!=null? CircularProgressIndicator():Text("");
+  }*/
 
   Future GetInfo(var diseaseName) async {
     try {
       var response = await http.post(
-          Uri.parse("https://813d-196-153-127-101.eu.ngrok.io/diseases"),
+          Uri.parse("https://4b2a-197-39-52-59.eu.ngrok.io/diseases"),
           body: {
             "disease": diseaseName.toString(),
           });
@@ -52,8 +58,13 @@ class resultImage extends State<myResult> {
   }
 
   Future getResult() async {
+
+    setState(() {
+      pressed=true;
+    });
+
     var response = await http
-        .get(Uri.parse("https://813d-196-153-127-101.eu.ngrok.io/user/detect"));
+        .get(Uri.parse("https://4b2a-197-39-52-59.eu.ngrok.io/user/detect"));
 
     if (response.statusCode == 200) {
       var jsonResponse = jsonDecode(response.body);
@@ -64,19 +75,22 @@ class resultImage extends State<myResult> {
       print('Request failed with status: ${response.statusCode}.');
     }
 
-    setState(() {});
     sendResult(widget.email, finalResult.toString());
+    setState(() {
+      pressed=false;
+    });
   }
 
   sendResult(var enteredEmail, var result) async {
     try {
       var response = await http.post(
-          Uri.parse("https://813d-196-153-127-101.eu.ngrok.io/user/save"),
+          Uri.parse("https://4b2a-197-39-52-59.eu.ngrok.io/user/save"),
           body: {"email": enteredEmail.toString(), "image": result});
       GetInfo(result);
     } catch (e) {
       print(e);
     }
+
   }
 
   @override
@@ -259,6 +273,7 @@ class resultImage extends State<myResult> {
                       diseaseResult == null
                           ? ElevatedButton(
                               onPressed: () async {
+
                                 getResult();
                                 setState(() {
                                   newForm();
@@ -331,7 +346,8 @@ class resultImage extends State<myResult> {
                                 )
                               ]),
                             )
-                          : Text("")
+                          : Text(""),
+                      pressed?CircularProgressIndicator():SizedBox()
                     ]),
                   ),
                 ),

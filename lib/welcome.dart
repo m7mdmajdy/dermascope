@@ -25,6 +25,7 @@ class _welcomeScreenState extends State<welcomeScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Column(
+                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(height: 50,),
@@ -79,13 +80,15 @@ class _welcomeScreenState extends State<welcomeScreen> {
                         SizedBox(
                           width: 10.0,
                         ),
-                        Text(
-                          "Dermascope is a software is developed for patients\nwho suffer from skin dieases and don't prefer to go\nto doctor"
-                              " specially after the COVID-19 infection.\n"
-                              "Dermascope can pre-diagnose the skin disease by \njust capturing the skin lesion and it will show the \n"
-                              "probable disease.",
-                          style:
-                          TextStyle(fontWeight:FontWeight.w400,fontSize: 15, color: Color(0xff35698A)),
+                        Expanded(
+                          child: Text(
+                            "Dermascope is a software is developed for patients\nwho suffer from skin dieases and don't prefer to go to doctor"
+                                " specially after the COVID-19 infection.\n"
+                                "Dermascope can pre-diagnose the skin disease by \njust capturing the skin lesion and it will show the \n"
+                                "probable disease.",
+                            style:
+                            TextStyle(fontWeight:FontWeight.w400,fontSize: 15, color: Color(0xff35698A)),
+                          ),
                         ),
                       ],
                     ),

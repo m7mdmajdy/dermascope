@@ -7,6 +7,7 @@ import 'package:untitled/result2.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:http/http.dart' as http;
 
 class myHomePage extends StatelessWidget {
@@ -34,6 +35,7 @@ class myApp extends StatefulWidget {
 }
 
 class uploadImage extends State<myApp> {
+  
   String? message = "";
   File? selectedImage;
   String? diseaseResult;
@@ -41,7 +43,7 @@ class uploadImage extends State<myApp> {
 
   imageToApi() async {
     final request = http.MultipartRequest(
-        "POST", Uri.parse("https://813d-196-153-127-101.eu.ngrok.io/user/detect"));
+        "POST", Uri.parse("https://4b2a-197-39-52-59.eu.ngrok.io/user/detect"));
     final headers = {"Content-type": "multipart/form-data"};
     request.files.add(http.MultipartFile('image',
         selectedImage!.readAsBytes().asStream(), selectedImage!.lengthSync(),
@@ -129,7 +131,7 @@ class uploadImage extends State<myApp> {
           body: Container(
             color: Colors.white,
             child: Container(
-              alignment: Alignment.topLeft,
+              alignment: Alignment.center,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   colorFilter: new ColorFilter.mode(
@@ -154,62 +156,69 @@ class uploadImage extends State<myApp> {
                               size: 250,
                               color: Color(0xff646FD4).withOpacity(0.8),
                             ),
-                      SizedBox(height: 10, width: 10),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: ElevatedButton(
-                                onPressed: pickImageC,
+                      SizedBox(height: 0, width: 0),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: ElevatedButton(
+                                  onPressed: pickImageC,
+                                  style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Color(0xff646FD4)),
+                                    shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(100.0),
+                                          side: BorderSide(
+                                              color: HexColor("#4c8cb5"))),
+                                    ),
+                                  ),
+                                  child: Row(children: [
+                                    Icon(Icons.camera_alt),
+                                    SizedBox(
+                                      width: 4,
+                                    ),
+                                    Text("Open camera", style: TextStyle(
+                                      fontSize: 12
+                                    ),),
+                                  ])),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: ElevatedButton(
+                                onPressed: pickImage,
                                 style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          Color(0xff646FD4)),
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                      Color(0xff646FD4)),
                                   shape: MaterialStateProperty.all<
                                       RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(100.0),
-                                        side: BorderSide(
-                                            color: HexColor("#4c8cb5"))),
+                                        borderRadius: BorderRadius.circular(100.0),
+                                        side:
+                                            BorderSide(color: HexColor("#4c8cb5"))),
                                   ),
                                 ),
                                 child: Row(children: [
-                                  Icon(Icons.camera_alt),
+                                  Icon(Icons.image_outlined),
                                   SizedBox(
                                     width: 4,
                                   ),
-                                  Text("Open camera"),
-                                ])),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 30.0),
-                            child: ElevatedButton(
-                              onPressed: pickImage,
-                              style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all<Color>(
-                                    Color(0xff646FD4)),
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(100.0),
-                                      side:
-                                          BorderSide(color: HexColor("#4c8cb5"))),
-                                ),
+                                  Text("Choose from gallery",style: TextStyle(
+                                    fontSize: 12
+                                  ),)
+                                ]),
                               ),
-                              child: Row(children: [
-                                Icon(Icons.image_outlined),
-                                SizedBox(
-                                  width: 4,
-                                ),
-                                Text("Choose from gallery")
-                              ]),
                             ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                        ],
+                            SizedBox(
+                              height: 20,
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         width: 30,
