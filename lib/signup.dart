@@ -1,5 +1,3 @@
-/*done*/
-import 'dart:developer';
 import 'dart:ui';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
@@ -23,16 +21,17 @@ class _signUpState extends State<signUp> {
 
   var dateController = TextEditingController();
 
-  sendInfo(var enteredName,var enteredEmail,var enteredPassword)async{
+  sendInfo(var enteredName,var enteredEmail,var enteredPassword, var enteredPhone, var enteredBdate)async{
     try{
-      var response = await http.post(Uri.parse("https://6523-197-39-38-140.eu.ngrok.io/user/signup"),
+      var response = await http.post(Uri.parse("https://4b2a-197-39-52-59.eu.ngrok.io/user/signup"),
           body: {
             "name": enteredName.toString(),
             "email":enteredEmail.toString(),
-            "password":enteredPassword.toString()
+            "password":enteredPassword.toString(),
+            "phone":enteredPhone.toString(),
+            "bdate":enteredBdate.toString(),
           }
       );
-
       if(response.statusCode==200){
         signedUpSuccessfully(context);
       }
@@ -52,7 +51,7 @@ class _signUpState extends State<signUp> {
     return InputDecoration(
       labelText: 'Date of birth',
       labelStyle: TextStyle(color: Colors.white),
-      fillColor: HexColor("#35698A").withOpacity(0.4), filled: true,
+      fillColor: HexColor("#8CC0DE").withOpacity(0.1), filled: true,
       border: OutlineInputBorder(),
       prefixIcon: Icon(
         Icons.date_range,
@@ -72,17 +71,6 @@ class _signUpState extends State<signUp> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          /* appBar: AppBar(
-            leading: Icon(Icons.account_circle_rounded),
-            toolbarHeight: 45,
-            backgroundColor: HexColor("#4c8cb5"),
-            title: Text("Create an account",textDirection:TextDirection.ltr),
-            titleTextStyle: TextStyle(fontSize: 20),
-            foregroundColor: Colors.white,
-            actions: <Widget>[
-              // overflow menu
-            ],
-          ),*/
           body:Container(
             child: Stack(
               children: [
@@ -90,7 +78,7 @@ class _signUpState extends State<signUp> {
                   child: ClipPath(
                     clipper: WaveClipper(),
                     child: Container(
-                      color: HexColor("#35698A").withOpacity(0.6),
+                      color: HexColor("#8CC0DE").withOpacity(0.6),
                       height: 660,
                     ),
                   ),
@@ -98,7 +86,7 @@ class _signUpState extends State<signUp> {
                 ClipPath(
                   clipper: WaveClipper(),
                   child: Container(
-                    color: HexColor("#35698A"),
+                    color: Color(0xff646FD4),
                     height: 640,
                     child:Padding(
                       padding: const EdgeInsets.all(16.0),
@@ -114,10 +102,11 @@ class _signUpState extends State<signUp> {
                             TextFormField(
                               controller: nameController,
                               keyboardType: TextInputType.name,
+                              style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                 labelText: 'Name',
                                 labelStyle: TextStyle(color: Colors.white),
-                                fillColor:  HexColor("#35698A").withOpacity(0.1), filled: true,
+                                fillColor:  HexColor("#8CC0DE").withOpacity(0.1), filled: true,
                                 border: OutlineInputBorder(),
                                 prefixIcon: Icon(
                                   Icons.account_circle_outlined,
@@ -141,10 +130,11 @@ class _signUpState extends State<signUp> {
                             TextFormField(
                               controller: emailController,
                               keyboardType: TextInputType.emailAddress,
+                              style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                 labelText: 'Email Address',
                                 labelStyle: TextStyle(color: Colors.white),
-                                fillColor: HexColor("#35698A").withOpacity(0.1), filled: true,
+                                fillColor: HexColor("#8CC0DE").withOpacity(0.1), filled: true,
                                 border: OutlineInputBorder(),
                                 prefixIcon: Icon(
                                   Icons.email,
@@ -171,10 +161,11 @@ class _signUpState extends State<signUp> {
                               controller: passwordController,
                               keyboardType: TextInputType.visiblePassword,
                               obscureText: true,
+                              style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                 labelText: 'Password',
                                 labelStyle: TextStyle(color: Colors.white),
-                                fillColor:  HexColor("#35698A").withOpacity(0.1), filled: true,
+                                fillColor:  HexColor("#8CC0DE").withOpacity(0.1), filled: true,
                                 border: OutlineInputBorder(),
                                 prefixIcon: Icon(
                                   Icons.lock,
@@ -202,10 +193,11 @@ class _signUpState extends State<signUp> {
                             TextFormField(
                               controller: phoneController,
                               keyboardType: TextInputType.phone,
+                              style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                 labelText: 'Phone Number',
                                 labelStyle: TextStyle(color: Colors.white),
-                                fillColor:  HexColor("#35698A").withOpacity(0.1),filled: true,
+                                fillColor:  HexColor("#8CC0DE").withOpacity(0.1),filled: true,
                                 border: OutlineInputBorder(),
                                 prefixIcon: Icon(
                                   Icons.phone,
@@ -229,6 +221,7 @@ class _signUpState extends State<signUp> {
                             ),
 
                             TextField(
+                              style: TextStyle(color: Colors.white),
                               showCursor: true,
                               readOnly: true,
                               onTap: () {
@@ -257,15 +250,17 @@ class _signUpState extends State<signUp> {
 
 
                             ElevatedButton(
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all<Color>(HexColor("#4c8cb5")),
-                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                        RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(100.0),
-                                            side: BorderSide(color: HexColor("#4c8cb5"))
-                                        )
-                                    )
-                                ),
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                  MaterialStateProperty.all<Color>(
+                                      HexColor("#FFF3E6")),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(100.0),
+                                          side: BorderSide(
+                                              color: HexColor("#4c8cb5"))))),
 
                               onPressed: ()
                               {
@@ -283,7 +278,7 @@ class _signUpState extends State<signUp> {
                                 }
                                 else
                                 {
-                                  sendInfo(nameController.text, emailController.text, passwordController.text);
+                                  sendInfo(nameController.text, emailController.text, passwordController.text,phoneController.text,_dateOfBirthController.text);
 
                                 }
 
@@ -293,7 +288,7 @@ class _signUpState extends State<signUp> {
                                 padding: const EdgeInsets.all(13.0),
                                 child: Text(
                                   'Sign Up',
-                                  style: TextStyle(color: Colors.white,
+                                  style: TextStyle(color: Colors.black,
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.bold),
                                 ),

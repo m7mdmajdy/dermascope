@@ -43,6 +43,11 @@ dependencies:
   url_launcher: ^6.1.2
   get: ^4.6.5
   no_context_navigation: ^2.1.2
+  flutter_speed_dial: ^6.0.0
+  flutter_profile_picture: ^2.0.0
+  circular_countdown_timer: ^0.2.1
+  duration_picker: ^1.1.0+1
+  flutter_screenutil: ^5.5.3+2
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -74,6 +79,12 @@ flutter:
     - images/4.jpg
     - images/5.jpg
     - images/7.jpg
+    - images/d.png
+    - images/layer.png
+    - images/test.png
+    - images/back.jpg
+    - images/ttt.jpg
+    - images/dood.png
 
   #   - images/a_dot_ham.jpeg
 

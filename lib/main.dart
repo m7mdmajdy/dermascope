@@ -1,16 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:untitled/Acne.dart';
-import 'package:untitled/dchat.dart';
-import 'package:untitled/patientchat.dart';
-import 'package:untitled/protection.dart';
-import 'package:untitled/result.dart';
-import 'package:untitled/protection.dart';
-import 'package:untitled/signup.dart';
-import 'package:untitled/welcome.dart';
 import 'package:untitled/Login.dart';
+import 'package:untitled/profile.dart';
+import 'package:untitled/signup.dart';
 import 'package:untitled/uploadImage.dart';
-import 'package:untitled/result2.dart';
+import 'package:untitled/welcome.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,7 +45,13 @@ class _State extends State<MyHomePage> {
     Timer(Duration(seconds: 3),navigateToSecondPage);
   }
   void navigateToSecondPage(){
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) => Login(),
+      ),
+          (route) => false,
+    );
   }
   @override
   Widget build(BuildContext context) {
@@ -63,7 +63,7 @@ class _State extends State<MyHomePage> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color.fromRGBO(66, 107, 127, 1),
+                  Color.fromRGBO(66, 107, 255, 1),
                   Color.fromRGBO(164, 183, 193, 1)
                 ],
               )
