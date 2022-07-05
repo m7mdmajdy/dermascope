@@ -662,20 +662,31 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       child: Scaffold(
         backgroundColor: Color(0xff35698A),
         appBar: AppBar(
-            toolbarHeight: 45,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(30),
-            ),),
-          backgroundColor: Color(0xffC1D6F1FF),
+          toolbarHeight: 70,
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
           title: Text(
-            _title,
-            style:TextStyle(
-                color: Color(0xff35698A) , fontSize: 25.0
+              _title,
+            style:TextStyle(fontSize: 27
+            ),
+          ),
+          leading: IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.arrow_back,
+              size: 35.0,
+              color:  Color(0xff35698A),
             ),
           ),
           centerTitle: true,
-
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              color: Color(0xffC1D6F1FF),
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20)),
+            ),
+          ),
         ),
         body: Container(
           child: _widgetOptions.elementAt(_selectedIndex),

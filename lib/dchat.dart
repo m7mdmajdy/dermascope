@@ -13,7 +13,7 @@ class PatientChat extends StatelessWidget {
             bottom: Radius.circular(30),
           ),
         ),
-        backgroundColor: Color(0xffC1D6F1FF),
+        backgroundColor: Color(0xFFCDC2AE),
         title: Text(
           'Chat',
           style: TextStyle(
@@ -71,7 +71,7 @@ class PatientChat extends StatelessWidget {
                     ),
                     Text(
                       'Search',
-                      style: TextStyle(color: Color(0xff35698A)),
+                      style: TextStyle(color: Color(0xff35698A )),
                     ),
                   ],
                 ),
@@ -98,7 +98,7 @@ class PatientChat extends StatelessWidget {
                             ),
                             borderRadius: BorderRadius.all( Radius.circular(50.0)),
                             border: Border.all(
-                              color: Colors.white,
+                              color:Color(0xFFC2DED1),
                               width: 4.0,
                             ),
                           ),
@@ -150,7 +150,7 @@ class PatientChat extends StatelessWidget {
                             ),
                             borderRadius: BorderRadius.all( Radius.circular(50.0)),
                             border: Border.all(
-                              color: Colors.white,
+                              color: Color(0xFFC2DED1),
                               width: 4.0,
                             ),
                           ),
